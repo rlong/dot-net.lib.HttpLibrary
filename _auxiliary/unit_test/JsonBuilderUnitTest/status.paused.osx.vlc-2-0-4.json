@@ -1,0 +1,79 @@
+{
+  "fullscreen":false,
+  "stats":{
+    "inputbitrate":0.1014599353075,
+    "sentbytes":0,
+    "lostabuffers":1,
+    "averagedemuxbitrate":0,
+    "readpackets":996,
+    "demuxreadpackets":0,
+    "lostpictures":0,
+    "displayedpictures":871,
+    "sentpackets":0,
+    "demuxreadbytes":1980762,
+    "demuxbitrate":0.097641296684742,
+    "playedabuffers":1309,
+    "demuxdiscontinuity":0,
+    "decodedaudio":1309,
+    "sendbitrate":0,
+    "readbytes":2294324,
+    "averageinputbitrate":0,
+    "demuxcorrupted":0,
+    "decodedvideo":901
+  },
+  "aspectratio":"default",
+  "audiodelay":0,
+  "apiversion":3,
+  "time":29,
+  "volume":26,
+  "length":454,
+  "random":false,
+  "audiofilters":{
+    "filter_0":""
+  },
+  "rate":1,
+  "videoeffects":{
+    "hue":0,
+    "saturation":1,
+    "contrast":1,
+    "brightness":1,
+    "gamma":1
+  },
+  "state":"paused",
+  "loop":false,
+  "version":"2.0.4 Twoflower",
+  "position":0.064344242215157,
+  "information":{
+    "titles":[],
+    "chapters":[],
+    "category":{
+      "Stream 0":{
+        "Frame_rate":"29.970000",
+        "Decoded_format":"Planar 4:2:0 YUV",
+        "Codec":"H264 - MPEG-4 AVC (part 10) (avc1)",
+        "Type":"Video",
+        "Resolution":"432x240"
+      },
+      "Stream 1":{
+        "Type":"Audio",
+        "Channels":"Stereo",
+        "Sample_rate":"44100 Hz",
+        "Language":"English",
+        "Codec":"MPEG AAC Audio (mp4a)"
+      },
+      "meta":{
+        "description":"To learn more about this speaker, find other TEDTalks, and subscribe to this Podcast series, visit www.TED.com   Feedback: tedtalks@ted.com",
+        "date":"2009",
+        "artwork_url":"file:///Users/user/Library/Caches/org.videolan.vlc/art/artistalbum/Joshua%20Silver/TEDTalks%20%28video%29/art.png",
+        "artist":"Joshua Silver",
+        "album":"TEDTalks (video)",
+        "title":"TEDTalks :  Josh Silver demos adjustable liquid-filled eyeglasses  - Joshua Silver (2009)",
+        "genre":"Podcast",
+        "filename":"TEDTalks :  Josh Silver demos adjustable liquid-filled eyeglasses  - Joshua Silver (2009)"
+      }
+    }
+  },
+  "repeat":false,
+  "subtitledelay":0,
+  "equalizer":[]
+}
