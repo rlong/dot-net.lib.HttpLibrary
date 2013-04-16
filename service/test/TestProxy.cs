@@ -11,14 +11,14 @@ using jsonbroker.library.common.broker;
 
 namespace jsonbroker.library.service.test
 {
-    class TestServiceProxy
+    class TestProxy
     {
 
         ////////////////////////////////////////////////////////////////////////////
         Service _service;
 
 
-        public TestServiceProxy(Service service)
+        public TestProxy(Service service)
         {
             _service = service;
         }
@@ -29,5 +29,10 @@ namespace jsonbroker.library.service.test
             _service.process(request);
         }
 
+        public void raiseError()
+        {
+            BrokerMessage request = BrokerMessage.buildRequest(TestService.SERVICE_NAME, "raiseError");
+            _service.process(request);
+        }
     }
 }

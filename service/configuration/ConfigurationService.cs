@@ -92,7 +92,7 @@ namespace jsonbroker.library.service.configuration
             FileStream fileStream = new FileStream(filePath, FileMode.Open);
             JsonObject answer;
             try {
-                answer = JsonObject.build(fileStream, (int)fileStream.Length);
+                answer = JsonObject.Build(fileStream, (int)fileStream.Length);
             }
             finally
             { 
@@ -157,13 +157,13 @@ namespace jsonbroker.library.service.configuration
 
             if ("getBundle".Equals(methodName))
             {
-                JsonObject associativeParamaters = request.getAssociativeParamaters();
-                String bundleName = associativeParamaters.getString("bundle_name");
+                JsonObject associativeParamaters = request.GetAssociativeParamaters();
+                String bundleName = associativeParamaters.GetString("bundle_name");
 
                 JsonObject bundleValue = getBundle(bundleName);
 
                 BrokerMessage answer = BrokerMessage.buildResponse(request);
-                associativeParamaters = answer.getAssociativeParamaters();
+                associativeParamaters = answer.GetAssociativeParamaters();
                 associativeParamaters.put("bundle_name", bundleName);
                 associativeParamaters.put("bundle_value", bundleValue);
                 return answer;

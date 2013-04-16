@@ -11,12 +11,22 @@ using jsonbroker.library.common.http;
 using jsonbroker.library.common.log;
 using jsonbroker.library.common.broker;
 using jsonbroker.library.common.auxiliary;
+using jsonbroker.library.common.defaults;
 
 namespace jsonbroker.library.server.http.reqest_handler
 {
     public class ServicesRequestHandler : RequestHandler
     {
         private static Log log = Log.getLog(typeof(ServicesRequestHandler));
+
+        private static int _MAXIMUM_REQUEST_ENTITY_LENGTH;
+
+
+        static ServicesRequestHandler()
+        {
+            Defaults defaults = DefaultsHelper.GetDefaults("jsonbroker.ServicesRequestHandler");
+            _MAXIMUM_REQUEST_ENTITY_LENGTH = defaults.GetInt("MAXIMUM_REQUEST_ENTITY_LENGTH", 32 * 1024);
+        }
 
 
         private ServicesRegistery _servicesRegistery;
@@ -34,7 +44,7 @@ namespace jsonbroker.library.server.http.reqest_handler
 
 
 
-        public void addService(DescribedService service)
+        public void AddService(DescribedService service)
         {
             log.infoFormat("adding service '{0}'", service.getServiceDescription().getServiceName());
             _servicesRegistery.addService(service);
@@ -78,9 +88,9 @@ namespace jsonbroker.library.server.http.reqest_handler
 
 
             Entity entity = request.Entity;
-            if (64 * 1024 < entity.getContentLength())
+            if (_MAXIMUM_REQUEST_ENTITY_LENGTH < entity.getContentLength())
             {
-                log.errorFormat("64 * 1024 < entity.getContentLength(); entity.getContentLength() = {0}", entity.getContentLength());
+                log.errorFormat("_MAXIMUM_REQUEST_ENTITY_LENGTH < entity.getContentLength(); _MAXIMUM_REQUEST_ENTITY_LENGTH = {0}; entity.getContentLength() = {1}", _MAXIMUM_REQUEST_ENTITY_LENGTH, entity.getContentLength());
                 throw HttpErrorHelper.requestEntityTooLarge413FromOriginator(typeof(ServicesRequestHandler));
             }
 

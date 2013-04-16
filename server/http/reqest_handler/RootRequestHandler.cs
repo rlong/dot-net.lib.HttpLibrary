@@ -10,10 +10,10 @@ using jsonbroker.library.common.log;
 
 namespace jsonbroker.library.server.http.reqest_handler
 {
-    public class RootProcessor : RequestHandler
+    public class RootRequestHandler : RequestHandler
     {
 
-        private static Log log = Log.getLog(typeof(RootProcessor));
+        private static Log log = Log.getLog(typeof(RootRequestHandler));
 
 
         ////////////////////////////////////////////////////////////////////////////
@@ -27,20 +27,20 @@ namespace jsonbroker.library.server.http.reqest_handler
 
         ////////////////////////////////////////////////////////////////////////////
         //
-        public RootProcessor()
+        public RootRequestHandler()
         {
             _httpProcessors = new List<RequestHandler>();
         }
 
 
-        public RootProcessor(RequestHandler defaultProcessor)
+        public RootRequestHandler(RequestHandler defaultProcessor)
         {
             _httpProcessors = new List<RequestHandler>();
             _defaultProcessor = defaultProcessor;
         }
 
 
-        public void addHttpProcessor(RequestHandler httpProcessor)
+        public void AddRequestHandler(RequestHandler httpProcessor)
         {
             String requestUri = httpProcessor.getProcessorUri();
             log.debug(requestUri, "requestUri");

@@ -12,7 +12,7 @@ using jsonbroker.library.common.log;
 namespace jsonbroker.library.common.json.output
 {
     [TestFixture]
-    [Category("current")]
+    //[Category("current")]
     public class JsonWriterUnitTest
     {
         private static Log log = Log.getLog(typeof(JsonWriterUnitTest));

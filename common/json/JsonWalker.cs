@@ -15,9 +15,9 @@ namespace jsonbroker.library.common.json
 
         private static void walkArray(JsonArray jsonArray, JsonDocumentHandler visitor)
         {
-            for (int index = 0, count = jsonArray.count(); index < count; index++)
+            for (int index = 0, count = jsonArray.Count(); index < count; index++)
             {
-                Object value = jsonArray.getObject(index);
+                Object value = jsonArray.GetObject(index, null);
 
                 if (null == value)
                 {
@@ -149,8 +149,6 @@ namespace jsonbroker.library.common.json
                 }
 
             }
-
-
 
         }
 

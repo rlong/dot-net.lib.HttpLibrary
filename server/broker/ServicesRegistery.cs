@@ -106,11 +106,11 @@ namespace jsonbroker.library.server.broker
 
             if ("getVersion".Equals(methodName))
             {
-                JsonObject associativeParamaters = request.getAssociativeParamaters();
+                JsonObject associativeParamaters = request.GetAssociativeParamaters();
                 String serviceName = request.getServiceName();
 
                 BrokerMessage answer = BrokerMessage.buildMetaResponse(request);
-                associativeParamaters = answer.getAssociativeParamaters();
+                associativeParamaters = answer.GetAssociativeParamaters();
 
                 if (!_services.ContainsKey(serviceName))
                 {

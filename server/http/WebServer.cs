@@ -143,7 +143,7 @@ namespace jsonbroker.library.server.http
             log.infoFormat("stopped listening for connections on port {0}", _port);
         }
 
-        public void start()
+        public void Start()
         {
 
 
@@ -198,7 +198,7 @@ namespace jsonbroker.library.server.http
             thread.Start();
         }
 
-        public void stop()
+        public void Stop()
         {
             log.warn("untested!");
             if (null == _serverSocket)

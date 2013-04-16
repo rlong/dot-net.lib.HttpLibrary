@@ -15,10 +15,10 @@ using jsonbroker.library.common.exception;
 
 namespace jsonbroker.library.server.http.reqest_handler
 {
-    public class AuthProcessor : RequestHandler
+    public class AuthRequestHandler : RequestHandler
     {
 
-        private static Log log = Log.getLog(typeof(AuthProcessor));
+        private static Log log = Log.getLog(typeof(AuthRequestHandler));
 
         private static readonly String REQUEST_URI = "/_dynamic_/auth";
 
@@ -38,13 +38,13 @@ namespace jsonbroker.library.server.http.reqest_handler
         }
 
 
-        public AuthProcessor(HttpSecurityManager securityManager)
+        public AuthRequestHandler(HttpSecurityManager securityManager)
         {
             _processors = new Dictionary<String, RequestHandler>();
             _securityManager = securityManager;
         }
 
-        public void addHttpProcessor(RequestHandler processor)
+        public void AddRequestHandler(RequestHandler processor)
         {
             String requestUri = REQUEST_URI + processor.getProcessorUri();
             log.debug(requestUri, "requestUri");
@@ -52,7 +52,7 @@ namespace jsonbroker.library.server.http.reqest_handler
         }
 
 
-        private RequestHandler getHttpProcessor(String requestUri)
+        private RequestHandler GetRequestHandler(String requestUri)
         {
             log.debug(requestUri, "requestUri");
 
@@ -111,7 +111,7 @@ namespace jsonbroker.library.server.http.reqest_handler
             RequestHandler httpProcessor;
             {
                 String requestUri = request.RequestUri;
-                httpProcessor = getHttpProcessor(requestUri);
+                httpProcessor = GetRequestHandler(requestUri);
                 if (null == httpProcessor)
                 {
                     log.errorFormat("null == httpProcessor; requestUri = {0}", requestUri);

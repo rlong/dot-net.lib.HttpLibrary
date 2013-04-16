@@ -37,6 +37,7 @@
       <HintPath>..\nunit\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -54,7 +55,6 @@
     <Compile Include="common\auxiliary\ExceptionHelper.cs" />
     <Compile Include="common\auxiliary\FileUtilities.cs" />
     <Compile Include="common\auxiliary\IntegerObject.cs" />
-    <Compile Include="common\auxiliary\IntegrationTestUtilities.cs" />
     <Compile Include="common\auxiliary\LongObject.cs" />
     <Compile Include="common\auxiliary\MutableData.cs" />
     <Compile Include="common\auxiliary\NumericUtilities.cs" />
@@ -68,6 +68,9 @@
     <Compile Include="common\broker\BrokerMessageType.cs" />
     <Compile Include="common\broker\FaultSerializer.cs" />
     <Compile Include="common\broker\Serializer.cs" />
+    <Compile Include="common\defaults\CommandLineArgs.cs" />
+    <Compile Include="common\defaults\Defaults.cs" />
+    <Compile Include="common\defaults\DefaultsHelper.cs" />
     <Compile Include="common\exception\BaseException.cs" />
     <Compile Include="common\exception\ErrorCodeUtilities.cs" />
     <Compile Include="common\http\DataEntity.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="common\json\JsonBuilderUnitTest.cs" />
     <Compile Include="common\json\JsonDocumentHandler.cs" />
     <Compile Include="common\json\JsonObject.cs" />
+    <Compile Include="common\json\JsonObjectHelper.cs" />
     <Compile Include="common\json\JsonObjectUnitTest.cs" />
     <Compile Include="common\json\JsonStack.cs" />
     <Compile Include="common\json\JsonWalker.cs" />
@@ -146,6 +150,8 @@
     <Compile Include="common\work\Worker.cs" />
     <Compile Include="common\work\WorkManager.cs" />
     <Compile Include="common\work\WorkQueue.cs" />
+    <Compile Include="integration_test\IntegrationTestServer.cs" />
+    <Compile Include="integration_test\IntegrationTestUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="server\broker\BrokerJob.cs" />
     <Compile Include="server\broker\DescribedService.cs" />
@@ -165,11 +171,11 @@
     <Compile Include="server\http\HttpResponse.cs" />
     <Compile Include="server\http\HttpResponseWriter.cs" />
     <Compile Include="server\http\MimeTypes.cs" />
-    <Compile Include="server\http\reqest_handler\AuthIntProcessor.cs" />
-    <Compile Include="server\http\reqest_handler\AuthProcessor.cs" />
-    <Compile Include="server\http\reqest_handler\FileProcessor.cs" />
+    <Compile Include="server\http\reqest_handler\AuthIntRequestHandler.cs" />
+    <Compile Include="server\http\reqest_handler\AuthRequestHandler.cs" />
+    <Compile Include="server\http\reqest_handler\FileRequestHandler.cs" />
     <Compile Include="server\http\reqest_handler\OpenRequestHandler.cs" />
-    <Compile Include="server\http\reqest_handler\RootProcessor.cs" />
+    <Compile Include="server\http\reqest_handler\RootRequestHandler.cs" />
     <Compile Include="server\http\reqest_handler\ServicesRequestHandler.cs" />
     <Compile Include="server\http\security\HttpSecurityJanitor.cs" />
     <Compile Include="server\http\security\HttpSecurityManager.cs" />
@@ -180,10 +186,10 @@
     <Compile Include="service\NullService.cs" />
     <Compile Include="service\test\TestService.cs" />
     <Compile Include="service\test\TestServiceIntegrationTest.cs" />
-    <Compile Include="service\test\TestServiceProxy.cs" />
+    <Compile Include="service\test\TestProxy.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="_auxiliary\unit_test\JsonBuilderUnitTest\status.paused.osx.vlc-2-0-4.json" />
+    <Content Include="_auxiliary\unit_test\JsonBuilderUnitTest\status.paused.osx.vlc-2-0-4.json" />
     <None Include="_auxiliary\unit_test\JsonBuilderUnitTest\status.playing.osx.vlc-2-0-4.json" />
     <None Include="_auxiliary\unit_test\JsonBuilderUnitTest\status.stopped.osx.vlc-2-0-4.json" />
   </ItemGroup>

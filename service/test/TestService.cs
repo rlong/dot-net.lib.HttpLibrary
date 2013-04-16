@@ -37,16 +37,12 @@ namespace jsonbroker.library.service.test
             log.enteredMethod();            
         }
 
-        private String ToString(Object o)
-        {
-            return o.ToString();
-        }
 
-        public void raise_error()
+        public void raiseError()
         {
 
             log.enteredMethod();
-            BaseException e = new BaseException(this, "TestService.raise_error() called");
+            BaseException e = new BaseException(this, "TestService.raiseError() called");
             e.ErrorDomain = "jsonbroker.TestService.RAISE_ERROR";
             throw e;            
         }
@@ -61,12 +57,12 @@ namespace jsonbroker.library.service.test
             if ("echo".Equals(methodName))
             {
 
-                JsonObject associativeParamaters = request.getAssociativeParamaters();
+                JsonObject associativeParamaters = request.GetAssociativeParamaters();
 
                 associativeParamaters = this.echo(associativeParamaters);
 
                 BrokerMessage answer = BrokerMessage.buildResponse(request);
-                answer.setAssociativeParamaters(associativeParamaters);
+                answer.SetAssociativeParamaters(associativeParamaters);
                 return answer;
             }
 
@@ -80,7 +76,7 @@ namespace jsonbroker.library.service.test
 
             if ("raiseError".Equals(methodName))
             {
-                this.raise_error();
+                this.raiseError();
 
                 BrokerMessage response = BrokerMessage.buildResponse(request);
                 return response;

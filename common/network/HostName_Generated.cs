@@ -50,9 +50,9 @@ namespace jsonbroker.library.common.network
         /////////////////////////////////////////////////////////
         public HostName_Generated(JsonObject values)
         {
-            _applicationName = values.getString("applicationName", null);
-            _zeroconfName = values.getString("zeroconfName", null);
-            _dnsName = values.getString("dnsName", null);
+            _applicationName = values.GetString("applicationName", null);
+            _zeroconfName = values.GetString("zeroconfName", null);
+            _dnsName = values.GetString("dnsName", null);
         }
 
         public JsonObject toJsonObject()

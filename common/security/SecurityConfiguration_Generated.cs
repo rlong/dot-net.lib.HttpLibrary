@@ -29,7 +29,7 @@ namespace jsonbroker.library.common.security
 
         public SecurityConfiguration_Generated(JsonObject values)
         {
-            _localRealm = values.getString("localRealm");
+            _localRealm = values.GetString("localRealm");
         }
 
         public virtual JsonObject ToJsonObject()

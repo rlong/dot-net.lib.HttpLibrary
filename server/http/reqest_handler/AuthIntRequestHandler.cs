@@ -19,9 +19,9 @@ using jsonbroker.library.common.auxiliary;
 
 namespace jsonbroker.library.server.http.reqest_handler
 {
-    class AuthIntProcessor : RequestHandler
+    class AuthIntRequestHandler : RequestHandler
     {
-        private static Log log = Log.getLog(typeof(AuthIntProcessor));
+        private static Log log = Log.getLog(typeof(AuthIntRequestHandler));
 
         private static readonly String REQUEST_URI = "/_dynamic_/auth-int";
 
@@ -39,7 +39,7 @@ namespace jsonbroker.library.server.http.reqest_handler
         }
 
 
-        public AuthIntProcessor(HttpSecurityManager securityManager)
+        public AuthIntRequestHandler(HttpSecurityManager securityManager)
         {
             _processors = new Dictionary<String, RequestHandler>();
             _securityManager = securityManager;
@@ -125,7 +125,7 @@ namespace jsonbroker.library.server.http.reqest_handler
             if (entity.getContentLength() > 64 * 1024)
             {
                 log.errorFormat("entity.getContentLength() > 64 * 1024; entity.getContentLength() = {0}", entity.getContentLength());
-                throw HttpErrorHelper.requestEntityTooLarge413FromOriginator(typeof(AuthIntProcessor));
+                throw HttpErrorHelper.requestEntityTooLarge413FromOriginator(typeof(AuthIntRequestHandler));
             }
 
             Data data = new Data(entity.getContent(), (int)entity.getContentLength());

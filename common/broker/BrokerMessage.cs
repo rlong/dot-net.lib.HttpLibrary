@@ -68,29 +68,29 @@ namespace jsonbroker.library.common.broker
         private JsonObject _associativeParamaters;
 
 
-        public JsonObject getAssociativeParamaters()
+        public JsonObject GetAssociativeParamaters()
         {
             return _associativeParamaters;
         }
 
-        public void setAssociativeParamaters(JsonObject associativeParamaters)
+        public void SetAssociativeParamaters(JsonObject associativeParamaters)
         {
             _associativeParamaters = associativeParamaters;
         }
 
         ///////////////////////////////////////////////////////////////////////
-        // paramaters
-        private JsonArray _paramaters;
+        // orderedParamaters
+        private JsonArray _orderedParamaters;
 
 
-        public JsonArray getParamaters()
+        public JsonArray GetOrderedParamaters()
         {
-            return _paramaters;
+            return _orderedParamaters;
         }
 
-        public void setParamaters(JsonArray paramaters)
+        public void SetOrderedParamaters(JsonArray paramaters)
         {
-            _paramaters = paramaters;
+            _orderedParamaters = paramaters;
         }
 
         ///////////////////////////////////////////////////////////////////////
@@ -99,28 +99,28 @@ namespace jsonbroker.library.common.broker
         {
             _metaData = new JsonObject();
             _associativeParamaters = new JsonObject();
-            _paramaters = new JsonArray();
+            _orderedParamaters = new JsonArray();
         }
 
 
         public BrokerMessage(JsonArray values)
         {
 
-            String messageTypeIdentifer = values.getString(0);
+            String messageTypeIdentifer = values.GetString(0);
             _messageType = BrokerMessageType.lookup(messageTypeIdentifer);
-            _metaData = values.getJsonObject(1);
-            _serviceName = values.getString(2);
-            int majorVersion = values.getInteger(3);
-            int minorVersion = values.getInteger(4);
-            _methodName = values.getString(5);
-            _associativeParamaters = values.getJsonObject(6);
-            if (7 < values.count())
+            _metaData = values.GetJsonObject(1);
+            _serviceName = values.GetString(2);
+            int majorVersion = values.GetInteger(3);
+            int minorVersion = values.GetInteger(4);
+            _methodName = values.GetString(5);
+            _associativeParamaters = values.GetJsonObject(6);
+            if (7 < values.Count())
             {
-                _paramaters = values.getJsonArray(7);
+                _orderedParamaters = values.GetJsonArray(7);
             }
             else
             {
-                _paramaters = new JsonArray(0);
+                _orderedParamaters = new JsonArray(0);
             }
         }
 
@@ -157,7 +157,7 @@ namespace jsonbroker.library.common.broker
             answer._serviceName = request._serviceName;
             answer._methodName = request._methodName;
             answer._associativeParamaters = FaultSerializer.ToJsonObject(e);
-            answer._paramaters = new JsonArray(0);
+            answer._orderedParamaters = new JsonArray(0);
 
             return answer;
 
@@ -173,7 +173,7 @@ namespace jsonbroker.library.common.broker
             answer._serviceName = request._serviceName;
             answer._methodName = request._methodName;
             answer._associativeParamaters = new JsonObject();
-            answer._paramaters = new JsonArray(0);
+            answer._orderedParamaters = new JsonArray(0);
 
             return answer;
         }
@@ -187,7 +187,7 @@ namespace jsonbroker.library.common.broker
             answer._serviceName = request._serviceName;
             answer._methodName = request._methodName;
             answer._associativeParamaters = new JsonObject();
-            answer._paramaters = new JsonArray(0);
+            answer._orderedParamaters = new JsonArray(0);
 
             return answer;
         }
@@ -205,7 +205,7 @@ namespace jsonbroker.library.common.broker
             answer.Add(0);
             answer.Add(_methodName);
             answer.Add(_associativeParamaters);
-            answer.Add(_paramaters);
+            answer.Add(_orderedParamaters);
 
             return answer;
 
@@ -214,28 +214,28 @@ namespace jsonbroker.library.common.broker
 
         public void addParameter(int parameter)
         {
-            _paramaters.Add(parameter);
+            _orderedParamaters.Add(parameter);
         }
 
         public void addParameter(JsonObject parameter)
         {
-            _paramaters.Add(parameter);
+            _orderedParamaters.Add(parameter);
         }
 
 
         public void addParameter(JsonArray parameter)
         {
-            _paramaters.Add(parameter);
+            _orderedParamaters.Add(parameter);
         }
 
         public void addParameter(Object parameter)
         {
-            _paramaters.Add(parameter);
+            _orderedParamaters.Add(parameter);
         }
 
         public void addParameter(String parameter)
         {
-            _paramaters.Add(parameter);
+            _orderedParamaters.Add(parameter);
         }
 
         public void setResponseType(String type)

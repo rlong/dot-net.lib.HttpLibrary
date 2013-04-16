@@ -25,7 +25,7 @@ namespace jsonbroker.library.common.json
             _values = new List<Object>(capacity);
         }
 
-        public int getInteger(int index)
+        public int GetInteger(int index)
         {
             Object blob = _values[index];
 
@@ -49,7 +49,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public JsonArray getJsonArray( int index ) 
+        public JsonArray GetJsonArray( int index ) 
         {
 		
             Object blob = _values[index];
@@ -73,7 +73,7 @@ namespace jsonbroker.library.common.json
 
 
 
-        public JsonObject getJsonObject( int index ) 
+        public JsonObject GetJsonObject( int index ) 
         {
 		
             Object blob = _values[index];
@@ -93,14 +93,34 @@ namespace jsonbroker.library.common.json
 		    return (JsonObject)blob;
 		}
 
-        public Object getObject(int index)
+        public Object GetObject(int index)
         {
             Object blob = _values[index];
+
+            if (null == blob)
+            {
+                String technicalError = String.Format("null == blob; index = {0}", index);
+                throw new BaseException(this, technicalError);
+            }
+
 
             return blob;
         }
 
-        public String getString(int index)
+        public Object GetObject(int index, Object defaultValue )
+        {
+            Object blob = _values[index];
+
+            if (null == blob)
+            {
+                return defaultValue;
+            }
+
+            return blob;
+        }
+
+
+        public String GetString(int index)
         {
             Object blob = _values[index];
 
@@ -120,19 +140,20 @@ namespace jsonbroker.library.common.json
 
         }
 
-        public String getString(int index, String fallback)
+        public String GetString(int index, String defaultValue)
         {
             Object blob = _values[index];
 
             if (null == blob)
             {
-                return fallback;
+                return defaultValue;
             }
 
 
             if (!(blob is String))
             {
-                return fallback;
+                String technicalError = String.Format("!(blob is String); index = {0}; blob.GetType().Name = {1}", index, blob.GetType().Name);
+                throw new BaseException(this, technicalError);
             }
 
             return (String)blob;
@@ -146,12 +167,12 @@ namespace jsonbroker.library.common.json
             _values.Add(obj);
         }
 
-        public int count()
+        public int Count()
         {
             return _values.Count;
         }
 
-        public int length()
+        public int Length()
         {
             return _values.Count;
         }

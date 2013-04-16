@@ -175,34 +175,34 @@ namespace jsonbroker.library.common.broker
         public static BaseException toBaseException(JsonObject jsonObject)
         {
 
-            String originator = jsonObject.getString("originator", "NULL");
-            String fault_string = jsonObject.getString("faultMessage", "NULL");
+            String originator = jsonObject.GetString("originator", "NULL");
+            String fault_string = jsonObject.GetString("faultMessage", "NULL");
 
             BaseException answer = new BaseException(originator, fault_string);
 
             {
-                String errorDomain = jsonObject.getString("errorDomain", null);
+                String errorDomain = jsonObject.GetString("errorDomain", null);
                 answer.ErrorDomain = errorDomain;
             }
 
-            int faultCode = jsonObject.getInteger("faultCode", BaseException.DEFAULT_FAULT_CODE);
+            int faultCode = jsonObject.GetInt("faultCode", BaseException.DEFAULT_FAULT_CODE);
             answer.FaultCode = faultCode;
 
-            String underlyingFaultMessage = jsonObject.getString("underlyingFaultMessage", null);
+            String underlyingFaultMessage = jsonObject.GetString("underlyingFaultMessage", null);
             answer.UnderlyingFaultMessage = underlyingFaultMessage;
 
-            JsonArray stack_trace = jsonObject.getJSONArray("stackTrace", null);
+            JsonArray stack_trace = jsonObject.GetJsonArray("stackTrace", null);
             if (null != stack_trace)
             {
-                for (int i = 0, count = stack_trace.count(); i < count; i++)
+                for (int i = 0, count = stack_trace.Count(); i < count; i++)
                 {
                     String key = "cause[" + i + "]";
-                    String value = stack_trace.getString(i, "NULL");
+                    String value = stack_trace.GetString(i, "NULL");
                     answer.addContext(key, value);
                 }
             }
 
-            JsonObject fault_context = jsonObject.getJsonObject("faultContext", null);
+            JsonObject fault_context = jsonObject.GetJsonObject("faultContext", null);
             if (null != fault_context)
             {
                 foreach (KeyValuePair<string, object> kvp in fault_context)

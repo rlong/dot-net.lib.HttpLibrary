@@ -15,9 +15,9 @@ using System.Security;
 
 namespace jsonbroker.library.server.http.reqest_handler
 {
-    public class FileProcessor : RequestHandler
+    public class FileRequestHandler : RequestHandler
     {
-        private static Log log = Log.getLog(typeof(FileProcessor));
+        private static Log log = Log.getLog(typeof(FileRequestHandler));
 
         ////////////////////////////////////////////////////////////////////////////
         private String _rootFolder;
@@ -26,7 +26,7 @@ namespace jsonbroker.library.server.http.reqest_handler
         private FileInfo _docRootFile;
 
 
-        public FileProcessor(String rootFolder)
+        public FileRequestHandler(String rootFolder)
         {
             _rootFolder = rootFolder;
             _docRootFile = new FileInfo(rootFolder);
@@ -47,14 +47,14 @@ namespace jsonbroker.library.server.http.reqest_handler
             {
 
                 log.errorFormat("'/' != requestUri.charAt(0); requestUri = '{0}'", requestUri);
-                throw HttpErrorHelper.forbidden403FromOriginator(typeof(FileProcessor));
+                throw HttpErrorHelper.forbidden403FromOriginator(typeof(FileRequestHandler));
             }
 
             if (-1 != requestUri.IndexOf("/."))
             { // UNIX hidden files
 
                 log.errorFormat("-1 != requestUri.indexOf( \"/.\"); requestUri = '{0}'", requestUri);
-                throw HttpErrorHelper.forbidden403FromOriginator(typeof(FileProcessor));
+                throw HttpErrorHelper.forbidden403FromOriginator(typeof(FileRequestHandler));
 
             }
 
@@ -62,7 +62,7 @@ namespace jsonbroker.library.server.http.reqest_handler
             { // parent directory
 
                 log.errorFormat("-1 != requestUri.indexOf( \"..\"); requestUri = '{0}'", requestUri);
-                throw HttpErrorHelper.forbidden403FromOriginator(typeof(FileProcessor));
+                throw HttpErrorHelper.forbidden403FromOriginator(typeof(FileRequestHandler));
 
             }
 		
@@ -74,7 +74,7 @@ namespace jsonbroker.library.server.http.reqest_handler
 		    if( null == MimeTypes.getMimeTypeForPath( requestUri ) ) {
 			
 			    log.errorFormat( "null == getMimeTypeForRequestUri( requestUri ); requestUri = '{0}'", requestUri ); 
-			    throw HttpErrorHelper.forbidden403FromOriginator( typeof(FileProcessor) );
+			    throw HttpErrorHelper.forbidden403FromOriginator( typeof(FileRequestHandler) );
             }
 			
 		}

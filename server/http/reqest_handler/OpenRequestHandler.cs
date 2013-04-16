@@ -27,7 +27,7 @@ namespace jsonbroker.library.server.http.reqest_handler
         }
 
 
-        public void addHttpProcessor(RequestHandler processor)
+        public void AddRequestHandler(RequestHandler processor)
         {
             String requestUri = REQUEST_URI + processor.getProcessorUri();
             log.debug(requestUri, "requestUri");
@@ -35,7 +35,7 @@ namespace jsonbroker.library.server.http.reqest_handler
         }
 
 
-        private RequestHandler getHttpProcessor(String requestUri)
+        private RequestHandler GetRequestHandler(String requestUri)
         {
             log.debug(requestUri, "requestUri");
 
@@ -66,7 +66,7 @@ namespace jsonbroker.library.server.http.reqest_handler
         {
 
             String requestUri = request.RequestUri;
-            RequestHandler httpProcessor = getHttpProcessor(requestUri);
+            RequestHandler httpProcessor = GetRequestHandler(requestUri);
 
 
             if (null == httpProcessor)

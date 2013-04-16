@@ -59,6 +59,7 @@ namespace jsonbroker.library.client.broker
         public BrokerMessage getResponse()
         {
 
+            log.debug(_responseData, "_responseData");
             BrokerMessage answer = Serializer.deserialize(_responseData);
 
             if (Log.isDebugEnabled())
@@ -68,7 +69,7 @@ namespace jsonbroker.library.client.broker
 
             if (BrokerMessageType.FAULT == answer.getMessageType())
             {
-                JsonObject associativeParamaters = answer.getAssociativeParamaters();
+                JsonObject associativeParamaters = answer.GetAssociativeParamaters();
                 BaseException e = FaultSerializer.toBaseException(associativeParamaters);
                 throw e;
             }

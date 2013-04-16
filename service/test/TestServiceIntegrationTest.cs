@@ -10,6 +10,8 @@ using NUnit.Framework;
 using jsonbroker.library.common.log;
 using jsonbroker.library.server.broker;
 using jsonbroker.library.common.auxiliary;
+using jsonbroker.library.common.exception;
+using jsonbroker.library.test;
 
 namespace jsonbroker.library.service.test
 {
@@ -17,22 +19,12 @@ namespace jsonbroker.library.service.test
 
     [TestFixture]
     [Category("integration")]
+    [Category("current")]
     public class TestServiceIntegrationTest
     {
 
         private static Log log = Log.getLog(typeof(TestServiceIntegrationTest));
 
-        private static TestServiceProxy _proxy;
-
-        static TestServiceIntegrationTest() 
-        {
-            DescribedService namedservice = new TestService();
-
-            Service service = IntegrationTestUtilities.setupService(IntegrationTestUtilities.TestType.EMBEDDED_AUTH_SERVER, namedservice);
-
-            _proxy = new TestServiceProxy(service);
-
-        }
 
         [Test]
         public void test1()
@@ -40,11 +32,42 @@ namespace jsonbroker.library.service.test
             log.debug("test1");
         }
 
+
+        TestProxy BuildProxy()
+        {
+            TestService describedService = new TestService();
+            Service service = IntegrationTestUtilities.GetInstance().wrapService(describedService);
+
+            TestProxy answer = new TestProxy(service);
+            return answer;
+        }
+
+
         [Test]
         public void testPing()
         {
-            _proxy.ping();
+            TestProxy proxy = BuildProxy();
+            proxy.ping();
         }
+
+        [Test]
+        public void testRaiseError()
+        {
+            log.enteredMethod();
+
+            TestProxy proxy = BuildProxy();
+
+            try
+            {
+                proxy.raiseError();
+                Assert.Fail("'BaseException' should have been thrown");
+            }
+            catch (BaseException e)
+            {
+                Assert.AreEqual("jsonbroker.TestService.RAISE_ERROR", e.ErrorDomain);
+            }            
+        }
+
 
         [TestFixtureTearDown]
         public void fixtureTearDown()

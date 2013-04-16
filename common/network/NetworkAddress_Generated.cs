@@ -29,7 +29,7 @@ namespace jsonbroker.library.common.network
 
         public NetworkAddress_Generated(JsonObject values)
         {
-            _port = values.getInteger("port");
+            _port = values.GetInt("port");
         }
 
         public JsonObject toJsonObject()

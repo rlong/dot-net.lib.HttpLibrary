@@ -64,10 +64,10 @@ namespace jsonbroker.library.common.json
 
             JsonObject jsonDocument = builder.getObjectDocument();
             Assert.NotNull(jsonDocument);
-            Assert.Null(jsonDocument.getObject("nullKey", null));
-            Assert.IsTrue(jsonDocument.getBoolean("booleanKey"));
-            Assert.AreEqual(314, jsonDocument.getInteger("integerKey"));
-            Assert.AreEqual("value", jsonDocument.getString("stringKey"));
+            Assert.Null(jsonDocument.GetObject("nullKey", null));
+            Assert.IsTrue(jsonDocument.GetBoolean("booleanKey"));
+            Assert.AreEqual(314, jsonDocument.GetInt("integerKey"));
+            Assert.AreEqual("value", jsonDocument.GetString("stringKey"));
         }
 
 

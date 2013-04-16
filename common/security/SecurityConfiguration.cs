@@ -57,7 +57,7 @@ namespace jsonbroker.library.common.security
         private SecurityConfiguration(JsonObject value, ConfigurationService configurationService)
         {
 
-            _identifier = value.getString("identifier");
+            _identifier = value.GetString("identifier");
             _configurationService = configurationService;
 
             _clients = new Dictionary<string, Subject>();
@@ -65,15 +65,15 @@ namespace jsonbroker.library.common.security
 
 
             { // subjects
-                JsonArray registeredSubjects = value.getJsonArray("subjects");
+                JsonArray registeredSubjects = value.GetJsonArray("subjects");
 
-                for (int i = 0, count = registeredSubjects.count(); i < count; i++)
+                for (int i = 0, count = registeredSubjects.Count(); i < count; i++)
                 {
-                    JsonObject subjectData = registeredSubjects.getJsonObject(i);
+                    JsonObject subjectData = registeredSubjects.GetJsonObject(i);
 
-                    String subjectIdentifier = subjectData.getString("identifier");
-                    String subjectPassword = subjectData.getString("password");
-                    String subjectLabel = subjectData.getString("label");
+                    String subjectIdentifier = subjectData.GetString("identifier");
+                    String subjectPassword = subjectData.GetString("password");
+                    String subjectLabel = subjectData.GetString("label");
 
                     this.addSubject(subjectIdentifier, subjectPassword, subjectLabel);
                 }
@@ -98,7 +98,7 @@ namespace jsonbroker.library.common.security
 
             if (null != bundleData)
             {
-                if (bundleData.contains("identifier"))
+                if (bundleData.Contains("identifier"))
                 {
                     answer = new SecurityConfiguration(bundleData, configurationService);
                     return answer;

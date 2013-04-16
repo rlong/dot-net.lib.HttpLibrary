@@ -28,7 +28,6 @@ namespace jsonbroker.library.common.json.handlers
 	    }
 
 
-
         public static JsonArray readJsonArray(JsonInput input)
         {
             JsonArray answer = new JsonArray();
@@ -79,10 +78,10 @@ namespace jsonbroker.library.common.json.handlers
             writer.append('[');
 
 
-            int count = array.count();
+            int count = array.Count();
             if (count > 0)
             {
-                Object obj = array.getObject(0);
+                Object obj = array.GetObject(0, null);
                 JsonHandler valueHandler = JsonHandler.getHandler(obj);
 
                 valueHandler.WriteValue(obj, writer);
@@ -92,13 +91,12 @@ namespace jsonbroker.library.common.json.handlers
             {
                 writer.append(',');
 
-                Object obj = array.getObject(i);
+                Object obj = array.GetObject(i, null);
                 JsonHandler valueHandler = JsonHandler.getHandler(obj);
 
                 valueHandler.WriteValue(obj, writer);
 
             }
-
 
             writer.append(']');
 

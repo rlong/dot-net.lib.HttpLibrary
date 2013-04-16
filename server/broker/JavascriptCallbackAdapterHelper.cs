@@ -63,13 +63,13 @@ namespace jsonbroker.library.server.broker
             jsonWriter.append("\",1,0,\"");
             jsonWriter.append(response.getMethodName());
             jsonWriter.append("\",");
-            jsonObjectHandler.WriteValue(response.getAssociativeParamaters(), jsonWriter);
-            JsonArray parameters = response.getParamaters();
+            jsonObjectHandler.WriteValue(response.GetAssociativeParamaters(), jsonWriter);
+            JsonArray parameters = response.GetOrderedParamaters();
 
-            for (int i = 0, count = parameters.count(); i < count; i++)
+            for (int i = 0, count = parameters.Count(); i < count; i++)
             {
                 jsonWriter.append(',');
-                Object blob = parameters.getObject(i);
+                Object blob = parameters.GetObject(i);
                 JsonHandler handler = JsonHandler.getHandler(blob);
                 handler.WriteValue(blob, jsonWriter);
             }

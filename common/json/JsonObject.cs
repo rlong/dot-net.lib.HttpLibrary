@@ -34,7 +34,7 @@ namespace jsonbroker.library.common.json
 
 
 
-        public bool contains(String key)
+        public bool Contains(String key)
         {
             if (_values.ContainsKey(key))
             {
@@ -45,7 +45,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public bool getBoolean(String key)
+        public bool GetBoolean(String key)
         {
             if (!_values.ContainsKey(key))
             {
@@ -73,7 +73,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public bool getBoolean(String key, bool defaultValue )
+        public bool GetBoolean(String key, bool defaultValue )
         {
             if (!_values.ContainsKey(key))
             {
@@ -96,7 +96,7 @@ namespace jsonbroker.library.common.json
 
         }
 
-        public int getInteger(String key)
+        public int GetInt(String key)
         {
             if (!_values.ContainsKey(key))
             {
@@ -123,7 +123,7 @@ namespace jsonbroker.library.common.json
 
         }
 
-        public int getInteger(String key, int defaultValue)
+        public int GetInt(String key, int defaultValue)
         {
 
             if (!_values.ContainsKey(key))
@@ -148,7 +148,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public JsonArray getJsonArray(String key)
+        public JsonArray GetJsonArray(String key)
         {
 
             if (!_values.ContainsKey(key))
@@ -178,7 +178,7 @@ namespace jsonbroker.library.common.json
 
         }
 
-        public JsonArray getJSONArray(String key, JsonArray defaultValue)
+        public JsonArray GetJsonArray(String key, JsonArray defaultValue)
         {
             if (!_values.ContainsKey(key))
             {
@@ -205,13 +205,34 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public JsonObject getJsonObject(String key, JsonObject defaultValue)
+        public JsonObject GetJsonObject(String key )
+        {
+            if (!_values.ContainsKey(key))
+            {
+                String technicalError = String.Format("!_values.ContainsKey(key); key = {0}", key);
+                throw new BaseException(this, technicalError);
+            }
+
+            Object blob = _values[key];
+
+            if (!(blob is JsonObject))
+            {
+                String technicalError = String.Format("!(blob is JsonObject); key = {0}; blob.GetType().Name = {1}", key, blob.GetType().Name);
+
+                throw new BaseException(this, technicalError);
+            } 
+            
+            return (JsonObject)blob;
+
+
+        }
+
+        public JsonObject GetJsonObject(String key, JsonObject defaultValue)
         {
             if (!_values.ContainsKey(key))
             {
                 return defaultValue;
             }
-
 
             Object blob = _values[key];
 
@@ -224,8 +245,10 @@ namespace jsonbroker.library.common.json
 
             if (!(blob is JsonObject))
             {
-                return defaultValue;
-            }
+                String technicalError = String.Format("!(blob is JsonObject); key = {0}; blob.GetType().Name = {1}", key, blob.GetType().Name);
+
+                throw new BaseException(this, technicalError);
+            } 
 
             return (JsonObject)blob;
 
@@ -233,7 +256,7 @@ namespace jsonbroker.library.common.json
 
 
 
-        public long getLong(String key)
+        public long GetLong(String key)
         {
             if (!_values.ContainsKey(key))
             {
@@ -267,7 +290,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public Object getObject(String key)
+        public Object GetObject(String key)
         {
             if (!_values.ContainsKey(key))
             {
@@ -281,7 +304,7 @@ namespace jsonbroker.library.common.json
             return blob;
         }
 
-        public Object getObject(String key, Object fallback)
+        public Object GetObject(String key, Object fallback)
         {
             if (!_values.ContainsKey(key))
             {
@@ -294,7 +317,7 @@ namespace jsonbroker.library.common.json
 
         }
 
-        public String getString(String key)
+        public String GetString(String key)
         {
             if (!_values.ContainsKey(key))
             {
@@ -323,7 +346,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public String getString(String key, String defaultValue)
+        public String GetString(String key, String defaultValue)
         {
             if (!_values.ContainsKey(key))
             {
@@ -404,7 +427,7 @@ namespace jsonbroker.library.common.json
         }
 
 
-        public static JsonObject build(Stream inputStream, int length)
+        public static JsonObject Build(Stream inputStream, int length)
         {
             Data data = new Data(inputStream, length);
             JsonDataInput dataInput = new JsonDataInput(data);
@@ -412,7 +435,7 @@ namespace jsonbroker.library.common.json
             return answer;
         }
 
-        public static JsonObject build(String jsonString)
+        public static JsonObject Build(String jsonString)
         {
 
             Data data = new Data(StringHelper.ToUtfBytes(jsonString));
