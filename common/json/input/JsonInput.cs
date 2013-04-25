@@ -41,6 +41,11 @@ namespace jsonbroker.library.common.json.input
                 return false;
             }
 
+            if ('\t' == candidateByte)
+            {
+                return false;
+            }
+
             if ('\n' == candidateByte)
             {
                 return false;
