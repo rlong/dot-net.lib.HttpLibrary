@@ -46,12 +46,15 @@
     <Compile Include="client\broker\BrokerMessageResponseHandler.cs" />
     <Compile Include="client\broker\ProxyHelper.cs" />
     <Compile Include="client\broker\ServiceHttpProxy.cs" />
+    <Compile Include="client\channel\ServiceChannelProxy.cs" />
     <Compile Include="client\http\Authenticator.cs" />
     <Compile Include="client\http\HttpDispatcher.cs" />
     <Compile Include="client\http\HttpRequestAdapter.cs" />
     <Compile Include="client\http\HttpResponseHandler.cs" />
     <Compile Include="common\auxiliary\BooleanObject.cs" />
+    <Compile Include="common\auxiliary\ByteHelper.cs" />
     <Compile Include="common\auxiliary\Data.cs" />
+    <Compile Include="common\auxiliary\DataHelper.cs" />
     <Compile Include="common\auxiliary\ExceptionHelper.cs" />
     <Compile Include="common\auxiliary\FileUtilities.cs" />
     <Compile Include="common\auxiliary\IntegerObject.cs" />
@@ -68,6 +71,8 @@
     <Compile Include="common\broker\BrokerMessageType.cs" />
     <Compile Include="common\broker\FaultSerializer.cs" />
     <Compile Include="common\broker\Serializer.cs" />
+    <Compile Include="common\channel\Channel.cs" />
+    <Compile Include="common\channel\SocketChannel.cs" />
     <Compile Include="common\defaults\CommandLineArgs.cs" />
     <Compile Include="common\defaults\Defaults.cs" />
     <Compile Include="common\defaults\DefaultsHelper.cs" />
@@ -110,8 +115,11 @@
     <Compile Include="common\json\handlers\JsonStringHandler.cs" />
     <Compile Include="common\json\input\JsonDataInput.cs" />
     <Compile Include="common\json\input\JsonInput.cs" />
+    <Compile Include="common\json\input\JsonInputHelper.cs" />
     <Compile Include="common\json\input\JsonReader.cs" />
+    <Compile Include="common\json\input\MutableDataPool.cs" />
     <Compile Include="common\json\JsonArray.cs" />
+    <Compile Include="common\json\JsonArrayHelper.cs" />
     <Compile Include="common\json\JsonBuilder.cs" />
     <Compile Include="common\json\JsonBuilderUnitTest.cs" />
     <Compile Include="common\json\JsonDocumentHandler.cs" />
@@ -121,6 +129,7 @@
     <Compile Include="common\json\JsonStack.cs" />
     <Compile Include="common\json\JsonWalker.cs" />
     <Compile Include="common\json\output\JsonOutput.cs" />
+    <Compile Include="common\json\output\JsonStreamOutput.cs" />
     <Compile Include="common\json\output\JsonStringOutput.cs" />
     <Compile Include="common\json\output\JsonWriter.cs" />
     <Compile Include="common\json\output\JsonWriterUnitTest.cs" />
@@ -150,8 +159,9 @@
     <Compile Include="common\work\Worker.cs" />
     <Compile Include="common\work\WorkManager.cs" />
     <Compile Include="common\work\WorkQueue.cs" />
-    <Compile Include="integration_test\IntegrationTestServer.cs" />
-    <Compile Include="integration_test\IntegrationTestUtilities.cs" />
+    <Compile Include="server\channel\SocketServerChannel.cs" />
+    <Compile Include="test\IntegrationTestServer.cs" />
+    <Compile Include="test\IntegrationTestUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="server\broker\BrokerJob.cs" />
     <Compile Include="server\broker\DescribedService.cs" />

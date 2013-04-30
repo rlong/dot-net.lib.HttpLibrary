@@ -7,13 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace jsonbroker.library.common.json.output
+namespace jsonbroker.library.common.auxiliary
 {
-    public interface JsonOutput
+    public class DataHelper
     {
 
-        void append(char c);
-        void append(String str);
-
+        public static String ToUtf8String(Data data)
+        {
+            return data.getUtf8String(0, data.Length);
+        }
     }
 }

@@ -37,21 +37,21 @@ namespace jsonbroker.library.common.json.handlers
 
             input.nextByte(); // move past the '{'
 
-            byte b = input.scanToNextToken();
+            byte b = JsonInputHelper.scanToNextToken( input );
 
             while ('}' != b)
             {
 
                 String key = JsonStringHandler.readString(input);
 
-                b = input.scanToNextToken();
+                b = JsonInputHelper.scanToNextToken(input);
 
                 JsonHandler valueHandler = JsonHandler.getHandler(b);
                 Object value = valueHandler.readValue(input);
 
                 answer.put(key, value);
 
-                b = input.scanToNextToken();
+                b = JsonInputHelper.scanToNextToken(input);
             }
 
             // move past the '}' if we can

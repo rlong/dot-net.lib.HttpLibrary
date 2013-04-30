@@ -25,13 +25,31 @@ namespace jsonbroker.library.common.json.input
             protected set { _cursor = value; }
         }
 
-        public JsonDataInput(Data data) : base(data ) {
+
+        ////////////////////////////////////////////////////////////////////////////
+        //
+        private MutableDataPool _mutableDataPool;
+
+        public MutableDataPool GetMutableDataPool()
+        {
+            if (null == _mutableDataPool)
+            {
+                _mutableDataPool = new MutableDataPool();
+            }
+            return _mutableDataPool;
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        //
+
+        public JsonDataInput(Data data) {
             _data = data;
             _cursor = 0;
 
         }
 
-        public override bool hasNextByte()
+        public bool hasNextByte()
         {
             if (1 + _cursor >= _data.getCount())
             {
@@ -41,14 +59,14 @@ namespace jsonbroker.library.common.json.input
             return true;
         }
 
-        public override byte nextByte()
+        public byte nextByte()
         {
             _cursor++;
             return _data.getByte(_cursor);
         }
 
 
-        public override byte currentByte()
+        public byte currentByte()
         {
             return _data.getByte(_cursor);
         }

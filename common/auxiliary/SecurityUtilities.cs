@@ -60,7 +60,7 @@ namespace jsonbroker.library.common.auxiliary
 
             byte[] hash = md5Context.ComputeHash(input);
 
-            String answer = StringHelper.ToHexString(hash);
+            String answer = ByteHelper.ToHexString(hash);
 
             return answer;
         }
@@ -74,7 +74,7 @@ namespace jsonbroker.library.common.auxiliary
 
             byte[] hash = md5Context.ComputeHash(input);
 
-            String answer = StringHelper.ToHexString(hash);
+            String answer = ByteHelper.ToHexString(hash);
 
             return answer;
         }
@@ -92,7 +92,7 @@ namespace jsonbroker.library.common.auxiliary
             MD5CryptoServiceProvider md5Context = new MD5CryptoServiceProvider();
             byte[] hash = md5Context.ComputeHash(utf8Value);
 
-            String answer = StringHelper.ToHexString(hash);
+            String answer = ByteHelper.ToHexString(hash);
 
             return answer;
 

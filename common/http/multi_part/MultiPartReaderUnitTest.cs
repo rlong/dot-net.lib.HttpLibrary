@@ -199,7 +199,7 @@ namespace jsonbroker.library.common.http.multi_part
             TestPartHandler firstTestPartHandler = testMultiPartHandler._partHandlers[0];
             Assert.AreEqual(16 + 6, firstTestPartHandler._data.Length);
             String expectedContent = "0123\r\n4567\r\n89ab\r\ncdef";
-            String actualContent = StringHelper.getUtf8String(firstTestPartHandler._data);
+            String actualContent = DataHelper.ToUtf8String(firstTestPartHandler._data);
             Assert.AreEqual(expectedContent, actualContent );
         }
 
@@ -243,7 +243,7 @@ namespace jsonbroker.library.common.http.multi_part
                 TestPartHandler firstTestPartHandler = testMultiPartHandler._partHandlers[0];
                 Assert.AreEqual(16 + 6, firstTestPartHandler._data.Length);
                 String expectedContent = "0123\r\n4567\r\n89ab\r\ncdef";
-                String actualContent = StringHelper.getUtf8String(firstTestPartHandler._data);
+                String actualContent = DataHelper.ToUtf8String(firstTestPartHandler._data);
                 Assert.AreEqual(expectedContent, actualContent);
             }
 
@@ -251,7 +251,7 @@ namespace jsonbroker.library.common.http.multi_part
                 TestPartHandler secondTestPartHandler = testMultiPartHandler._partHandlers[1];
                 Assert.AreEqual(16 + 6, secondTestPartHandler._data.Length);
                 String expectedContent = "cdef\r\n89ab\r\n4567\r\n0123";
-                String actualContent = StringHelper.getUtf8String(secondTestPartHandler._data);
+                String actualContent = DataHelper.ToUtf8String(secondTestPartHandler._data);
                 Assert.AreEqual(expectedContent, actualContent);
             }
         }
@@ -321,8 +321,8 @@ namespace jsonbroker.library.common.http.multi_part
             Assert.AreEqual(1, testMultiPartHandler._partHandlers.Count);
 
             TestPartHandler firstTestPartHandler = testMultiPartHandler._partHandlers[0];
-            Assert.AreEqual(attachment.Length, firstTestPartHandler._data.Length);            
-            String actualContent = StringHelper.getUtf8String(firstTestPartHandler._data);
+            Assert.AreEqual(attachment.Length, firstTestPartHandler._data.Length);
+            String actualContent = DataHelper.ToUtf8String(firstTestPartHandler._data);
             Assert.AreEqual(attachment, actualContent);
 
         }
@@ -433,14 +433,14 @@ namespace jsonbroker.library.common.http.multi_part
             {
                 TestPartHandler firstTestPartHandler = testMultiPartHandler._partHandlers[0];
                 Assert.AreEqual(attachment.Length, firstTestPartHandler._data.Length);
-                String actualContent = StringHelper.getUtf8String(firstTestPartHandler._data);
+                String actualContent = DataHelper.ToUtf8String(firstTestPartHandler._data);
                 Assert.AreEqual(attachment, actualContent);
             }
 
             {
                 TestPartHandler secondTestPartHandler = testMultiPartHandler._partHandlers[1];
                 Assert.AreEqual(attachment.Length, secondTestPartHandler._data.Length);
-                String actualContent = StringHelper.getUtf8String(secondTestPartHandler._data);
+                String actualContent = DataHelper.ToUtf8String(secondTestPartHandler._data);
                 Assert.AreEqual(attachment, actualContent);
             }
 

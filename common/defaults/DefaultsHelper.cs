@@ -27,7 +27,7 @@ namespace jsonbroker.library.common.defaults
                 if (null != argumentValue)
                 {
                     log.debug(argumentValue, "argumentValue");
-                    JsonObject environment = JsonObjectHelper.BuildFromString(argumentValue);
+                    JsonObject environment = JsonObjectHelper.FromString(argumentValue);
                     return new Defaults(environment);
                 }
             }
@@ -43,7 +43,7 @@ namespace jsonbroker.library.common.defaults
                 if (null != environmentValue)
                 {
                     log.debug(environmentValue, "environmentVariable");
-                    JsonObject environment = JsonObjectHelper.BuildFromString(environmentValue);
+                    JsonObject environment = JsonObjectHelper.FromString(environmentValue);
                     return new Defaults(environment);
                 }
             }
@@ -55,7 +55,7 @@ namespace jsonbroker.library.common.defaults
                 if (null != settingsValue)
                 {
                     log.debug(settingsValue, "settingsValue");
-                    JsonObject environment = JsonObjectHelper.BuildFromString(settingsValue);
+                    JsonObject environment = JsonObjectHelper.FromString(settingsValue);
                     return new Defaults(environment);
                 }
 

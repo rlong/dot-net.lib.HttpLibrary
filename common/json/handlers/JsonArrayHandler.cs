@@ -34,7 +34,7 @@ namespace jsonbroker.library.common.json.handlers
 
             input.nextByte(); // move past the '['
 
-            byte b = input.scanToNextToken();
+            byte b = JsonInputHelper.scanToNextToken( input );
 
             while (']' != b)
             {
@@ -45,7 +45,7 @@ namespace jsonbroker.library.common.json.handlers
 
                 answer.Add(obj);
 
-                b = input.scanToNextToken();
+                b = JsonInputHelper.scanToNextToken( input );
             }
 
             // move past the ']' if we can

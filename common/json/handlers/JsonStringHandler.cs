@@ -32,7 +32,7 @@ namespace jsonbroker.library.common.json.handlers
 
         public static String readString(JsonInput input)
         {
-            MutableData data = input.reserveMutableData();
+            MutableData data = input.GetMutableDataPool().reserveMutableData();
             try
             {
                 byte b;
@@ -85,7 +85,7 @@ namespace jsonbroker.library.common.json.handlers
             }
             finally
             {
-                input.releaseMutableData(data);
+                input.GetMutableDataPool().releaseMutableData(data);
             }
         }
 

@@ -29,7 +29,7 @@ namespace jsonbroker.library.common.auxiliary
 
             _randy.NextBytes(uuid);
 
-            return StringHelper.ToHexString(uuid);
+            return ByteHelper.ToHexString(uuid);
         }
 
     }

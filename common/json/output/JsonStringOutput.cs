@@ -24,12 +24,12 @@ namespace jsonbroker.library.common.json.output
             _stringBuilder.Length = 0;
         }
 
-        public override void append(char c)
+        public void append(char c)
         {
             _stringBuilder.Append(c);
         }
 
-        public override void append(String str)
+        public void append(String str)
         {
             _stringBuilder.Append(str);
         }

@@ -12,8 +12,6 @@ namespace jsonbroker.library.common.json
 {
     public class JsonBuilder : JsonDocumentHandler 
     {
-        private static Log log = Log.getLog(typeof(JsonBuilder));
-
 
         JsonStack _stack;
 
@@ -41,9 +39,6 @@ namespace jsonbroker.library.common.json
         {
             _stack = new JsonStack();
         }
-
-
-
 
         ////////////////////////////////////////////////////////////////////////////        
         // document
@@ -80,7 +75,6 @@ namespace jsonbroker.library.common.json
 
         public void onArrayStart(int index)
         {
-            log.debug(index, "index");
 
             JsonArray jsonArray = new JsonArray();
             _stack.getCurrentArray().Add(jsonArray);
@@ -91,7 +85,6 @@ namespace jsonbroker.library.common.json
 
         public void onArrayEnd(int index)
         {
-            log.debug(index, "index");
             _stack.pop();
 
         }
@@ -136,7 +129,6 @@ namespace jsonbroker.library.common.json
 
         public void onObjectStart(int index)
         {
-            log.debug(index, "index");
             JsonObject jsonObject = new JsonObject();
             _stack.getCurrentArray().Add(jsonObject);
             _stack.push(jsonObject);
@@ -146,7 +138,6 @@ namespace jsonbroker.library.common.json
 
         public void onObjectEnd(int index)
         {
-            log.debug(index, "index");
             _stack.pop();
 
         }
@@ -162,7 +153,6 @@ namespace jsonbroker.library.common.json
 
         public void onArrayStart(String key)
         {
-            log.debug(key, "key");
 
             JsonArray jsonArray = new JsonArray();
             _stack.getCurrentObject().put(key, jsonArray);
@@ -173,7 +163,6 @@ namespace jsonbroker.library.common.json
 
         public void onArrayEnd(String key)
         {
-            log.debug(key, "key");
             _stack.pop();
 
         }
@@ -218,8 +207,6 @@ namespace jsonbroker.library.common.json
 
         public void onObjectStart(String key)
         {
-            log.debug(key, "key");
-
 
             JsonObject jsonObject = new JsonObject();
             _stack.getCurrentObject().put(key, jsonObject);
@@ -230,19 +217,15 @@ namespace jsonbroker.library.common.json
 
         public void onObjectEnd(String key)
         {
-            log.debug(key, "key");
             _stack.pop();
 
         }
-
 
 
         public void onString(String key, String value)
         {
             _stack.getCurrentObject().put(key, value);
         }
-
-
 
 
     }

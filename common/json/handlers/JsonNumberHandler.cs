@@ -33,7 +33,7 @@ namespace jsonbroker.library.common.json.handlers
 
         public static Object readNumber(JsonInput input)
         {
-            MutableData data = input.reserveMutableData();
+            MutableData data = input.GetMutableDataPool().reserveMutableData();
 
             try
             {
@@ -90,7 +90,7 @@ namespace jsonbroker.library.common.json.handlers
             }
             finally
             {
-                input.releaseMutableData(data);
+                input.GetMutableDataPool().releaseMutableData(data);
             }
 
         }

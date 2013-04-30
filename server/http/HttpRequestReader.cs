@@ -123,7 +123,7 @@ namespace jsonbroker.library.server.http
                 // end of stream or end of the line
                 if (-1 == byteRead || '\n' == byteRead)
                 {
-                    String answer = StringHelper.getUtf8String(buffer);
+                    String answer = DataHelper.ToUtf8String(buffer);
                     return answer;
                 }
 

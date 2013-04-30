@@ -26,18 +26,19 @@ namespace jsonbroker.library.common.broker
 
         public static BrokerMessage deserialize(Data data)
         {
-            JsonDataInput reader = new JsonDataInput(data);
+            JsonDataInput jsonInput = new JsonDataInput(data);
 
-            reader.scanToNextToken();
+            JsonInputHelper.scanToNextToken(jsonInput);
+            
 
             JsonArray messageComponents;
             try
             {
-                messageComponents = _jsonArrayHandler.readJSONArray(reader);
+                messageComponents = _jsonArrayHandler.readJSONArray(jsonInput);
             }
             catch (BaseException exception)
             {
-                exception.addContext("Serializer.dataOffset", reader.Cursor);
+                exception.addContext("Serializer.dataOffset", jsonInput.Cursor);
                 throw exception;
             }
             

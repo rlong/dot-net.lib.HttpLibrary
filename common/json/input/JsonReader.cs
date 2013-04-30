@@ -49,7 +49,7 @@ namespace jsonbroker.library.common.json.input
 
             int index = -1;
 
-            for (byte nextTokenStart = input.scanToNextToken(); ']' != nextTokenStart; nextTokenStart = input.scanToNextToken())
+            for (byte nextTokenStart = JsonInputHelper.scanToNextToken(input); ']' != nextTokenStart; nextTokenStart = JsonInputHelper.scanToNextToken(input))
             {
 
                 index++;
@@ -162,12 +162,13 @@ namespace jsonbroker.library.common.json.input
 
         private static void readObject(JsonInput input, JsonDocumentHandler handler)
         {
-            		
-            for( byte nextTokenStart = input.scanToNextToken(); '}' != nextTokenStart; nextTokenStart = input.scanToNextToken()) {
+
+            for (byte nextTokenStart = JsonInputHelper.scanToNextToken(input); '}' != nextTokenStart; nextTokenStart = JsonInputHelper.scanToNextToken(input))
+            {
 
                 String key = JsonStringHandler.readString(input);
 
-                nextTokenStart = input.scanToNextToken();
+                nextTokenStart = JsonInputHelper.scanToNextToken(input);
 
                 if ('"' == nextTokenStart)
                 {

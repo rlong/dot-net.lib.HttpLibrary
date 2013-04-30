@@ -11,7 +11,7 @@ using jsonbroker.library.common.broker;
 
 namespace jsonbroker.library.service.test
 {
-    class TestProxy
+    public class TestProxy
     {
 
         ////////////////////////////////////////////////////////////////////////////

@@ -15,8 +15,7 @@ namespace jsonbroker.library.common.json
     {
 
 
-
-        public static JsonObject BuildFromString(String jsonString)
+        public static JsonObject FromString(String jsonString)
         {
 
             byte[] rawData = StringHelper.ToUtfBytes(jsonString);

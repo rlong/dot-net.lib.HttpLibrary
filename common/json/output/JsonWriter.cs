@@ -11,9 +11,6 @@ using jsonbroker.library.common.json.handlers;
 namespace jsonbroker.library.common.json.output
 {
 
-
-
-
     public class JsonWriter : JsonDocumentHandler
     {
         JsonOutput _output;
