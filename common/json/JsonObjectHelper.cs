@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Text;
 using jsonbroker.library.common.auxiliary;
 using jsonbroker.library.common.json.input;
+using System.IO;
+using jsonbroker.library.common.json.output;
 
 namespace jsonbroker.library.common.json
 {
@@ -31,5 +33,20 @@ namespace jsonbroker.library.common.json
 
         }
 
+        public static byte[] ToBytes(JsonObject jsonObject)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            write(jsonObject, memoryStream);
+            return memoryStream.ToArray();
+        }
+
+
+        public static void write(JsonObject jsonObject, Stream destination)
+        {
+            JsonStreamOutput jsonStreamOutput = new JsonStreamOutput(destination);
+            JsonWriter writer = new JsonWriter(jsonStreamOutput);
+            JsonWalker.walk(jsonObject, writer);
+            jsonStreamOutput.Flush();
+        }
     }
 }

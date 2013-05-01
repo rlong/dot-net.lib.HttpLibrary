@@ -33,7 +33,7 @@ namespace jsonbroker.library.common.channel
         public SocketChannel(string hostname, int port)
         {
             TcpClient tcpClient = new TcpClient();
-            tcpClient.Connect("127.0.0.1", port );
+            tcpClient.Connect(hostname, port);
             _socket = tcpClient.Client;
         }
 
@@ -88,6 +88,15 @@ namespace jsonbroker.library.common.channel
 
             return DataHelper.ToUtf8String(data);
 
+        }
+
+
+        public byte[] ReadBytes( int count )
+        {
+            byte[] answer = new byte[count];
+            _socket.Receive(answer);
+
+            return answer;
         }
 
         public void Write(byte[] bytes)

@@ -15,6 +15,8 @@ namespace jsonbroker.library.common.channel
         void Close(bool ignoreErrors);
 
         String ReadLine();
+        byte[] ReadBytes(int count);
+
 
         void Write(byte[] bytes);
         void Write(String line);
