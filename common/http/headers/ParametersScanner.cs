@@ -147,7 +147,7 @@ namespace jsonbroker.library.common.http.headers
             moveToEndOfToken();
 
             int length = _offset - startOfToken;
-            String answer = _value.Substring(startOfToken, length);
+            String answer = _value.Substring(startOfToken, length); // Subtring( int start, int length )
 
             return answer;
 
@@ -223,7 +223,7 @@ namespace jsonbroker.library.common.http.headers
             }
 
             int length = _offset - startOfToken;
-            String answer = _value.Substring(startOfToken, length);
+            String answer = _value.Substring(startOfToken, length); // Subtring( int start, int length )
 
             if (isQuotedString) // move past the closing quotes
             {

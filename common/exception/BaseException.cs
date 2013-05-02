@@ -20,11 +20,19 @@ namespace jsonbroker.library.common.exception
 
         public static readonly int DEFAULT_FAULT_CODE = BASE_ERROR_CODE | 0x01;
 
-        private Object _originatingObject;
-        protected Object originatingObject
+
+        ///////////////////////////////////////////////////////////////////////
+        // 
+        private Dictionary<String, String> _context;
+
+        /////////////////////////////////////////////////////////
+        // errorDomain
+        private String _errorDomain;
+
+        public String ErrorDomain
         {
-            get { return _originatingObject; }
-            set { _originatingObject = value; }
+            get { return _errorDomain; }
+            set { _errorDomain = value; }
         }
 
 
@@ -37,6 +45,14 @@ namespace jsonbroker.library.common.exception
             set { _faultCode = value; }
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // 
+        private Object _originator;
+        protected Object Originator
+        {
+            get { return _originator; }
+            set { _originator = value; }
+        }
 
         ///////////////////////////////////////////////////////////////////////
         // underlyingFaultMessage
@@ -48,25 +64,13 @@ namespace jsonbroker.library.common.exception
             set { _underlyingFaultMessage = value; }
         }
 
+
         ///////////////////////////////////////////////////////////////////////
         // 
-        private Dictionary<String, String> _context;
-
-
-        /////////////////////////////////////////////////////////
-        // errorDomain
-        private String _errorDomain;
-
-        public String ErrorDomain
-        {
-            get { return _errorDomain; }
-            set { _errorDomain = value; }
-        }
-
         public BaseException(Object originatingObject, String format, params object[] formatParams)
             : base( String.Format( format, formatParams ) )
         {
-            _originatingObject = originatingObject;
+            _originator = originatingObject;
             _faultCode = BaseException.DEFAULT_FAULT_CODE;
             _context = new Dictionary<String, String>();
         }
@@ -74,7 +78,7 @@ namespace jsonbroker.library.common.exception
         public BaseException(Object originatingObject, String faultString)
             : base(faultString)
         {
-            _originatingObject = originatingObject;
+            _originator = originatingObject;
             _faultCode = BaseException.DEFAULT_FAULT_CODE;
             _context = new Dictionary<String, String>();
         }
@@ -84,7 +88,7 @@ namespace jsonbroker.library.common.exception
         public BaseException(Exception cause, Object originatingObject, String faultString)
             : base(faultString,cause)
         {
-            _originatingObject = originatingObject;
+            _originator = originatingObject;
             _faultCode = BaseException.DEFAULT_FAULT_CODE;
             _context = new Dictionary<String, String>();
         }
@@ -93,14 +97,14 @@ namespace jsonbroker.library.common.exception
         public BaseException(Object originatingObject, int faultCode, String faultString)
             : base(faultString)
         {
-            _originatingObject = originatingObject;
+            _originator = originatingObject;
             _faultCode = faultCode;
             _context = new Dictionary<String, String>();
         }
 
         public BaseException(Object originatingObject, Exception cause) : base(cause.Message, cause )
         {
-            _originatingObject = originatingObject;
+            _originator = originatingObject;
             _faultCode = BaseException.DEFAULT_FAULT_CODE;
             _context = new Dictionary<String, String>();
             _underlyingFaultMessage = ExceptionHelper.getUnderlyingFaultMessage(cause);
@@ -110,13 +114,13 @@ namespace jsonbroker.library.common.exception
         public String getOriginator()
         {
             Type originatingClass = null;
-            if (_originatingObject is Type)
+            if (_originator is Type)
             {
-                originatingClass = (Type)_originatingObject;
+                originatingClass = (Type)_originator;
             }
             else
             {
-                originatingClass = _originatingObject.GetType();
+                originatingClass = _originator.GetType();
             }
 
             int lineNumber = 0;

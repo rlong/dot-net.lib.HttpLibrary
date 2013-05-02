@@ -44,7 +44,7 @@ namespace jsonbroker.library.service.test
             log.enteredMethod();
             BaseException e = new BaseException(this, "TestService.raiseError() called");
             e.ErrorDomain = "jsonbroker.TestService.RAISE_ERROR";
-            throw e;            
+            throw e;
         }
 
 
