@@ -149,27 +149,47 @@ namespace jsonbroker.library.server.http
         {
             int statusCode = response.Status;
 
+            String requestUri = request.RequestUri;
+
+            long contentLength = 0;
+            if (null != response.Entity)
+            {
+                contentLength = response.Entity.getContentLength();
+                if (null != response.Range)
+                {
+                    contentLength = response.Range.getContentLength(contentLength);
+                }
+            }
+
+
             long timeTaken = DateTime.Now.Ticks - request.Created;
             // DateTime .Ticks Property ... 
             //A single tick represents one hundred nanoseconds or one ten-millionth of a second. There are 10,000 ticks in a millisecond.
             timeTaken /= 10 * 1000;
 
-            String payloadSize = "-";
-            LongObject contentLength = response.getContentLength();
-            if (null != contentLength)
-            {
-                payloadSize = contentLength.longValue().ToString();
-            }
-
-            String requestUri = request.RequestUri;
+            String completed;
             if (writeResponseSucceded)
             {
-                log.infoFormat("{0} {1} {2} T {3}", statusCode, timeTaken, payloadSize, requestUri);
-            }
-            else
+                completed = "true";
+            } else 
             {
-                log.infoFormat("{0} {1} {2} F {3}", statusCode, timeTaken, payloadSize, requestUri);
+                completed = "false";
             }
+
+            String rangeString;
+            {
+                if (null == response.Range)
+                {
+                    rangeString = "bytes";
+                }
+                else
+                {
+                    rangeString = response.Range.ToContentRange(response.Entity.getContentLength());
+                }
+            }
+
+            log.infoFormat("status:{0} uri:{1} content-length:{2} time-taken:{3} completed:{4} range:{5}", statusCode, requestUri, contentLength, timeTaken, completed, rangeString);
+
         }
 
 
@@ -188,7 +208,8 @@ namespace jsonbroker.library.server.http
 
             bool continueProcessingRequests = true;
 
-                // vvv http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.10
+                
+            // vvv http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.10
             if( request.isCloseConnectionIndicated() ) {  // if( [request isCloseConnectionIndicated] ) {
 
                 continueProcessingRequests = false;

@@ -74,13 +74,13 @@ namespace jsonbroker.library.common.http.headers
             int indexOfSlash = value.IndexOf("/");
             if (-1 == indexOfSlash)
             {
-                BaseException e = new BaseException(typeof(MediaTypeUnitTest), "-1 == indexOfSlash; value = {0}", value);
+                BaseException e = new BaseException(typeof(MediaType), "-1 == indexOfSlash; value = {0}", value);
                 throw e;
             }
 
             MediaType answer = new MediaType(value);
 
-            String type = value.Substring(0, indexOfSlash);
+            String type = value.Substring(0, indexOfSlash); // int startIndex, int length
             log.debug(type, "type");
             answer._type = type;
             String remainder = value.Substring(indexOfSlash+1);
@@ -95,8 +95,8 @@ namespace jsonbroker.library.common.http.headers
                 }
                 else
                 {
-                    subtype = remainder.Substring(0,indexOfSemiColon);
-                    ParametersScanner scanner = new ParametersScanner(indexOfSemiColon, remainder);
+                    subtype = remainder.Substring(0, indexOfSemiColon); // int startIndex, int length
+                    ParametersScanner scanner = new ParametersScanner(indexOfSemiColon, remainder); 
                     String attribute;
                     while (null != (attribute = scanner.NextAttribute()))
                     {

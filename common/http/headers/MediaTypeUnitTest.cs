@@ -41,7 +41,6 @@ namespace jsonbroker.library.common.http.headers
             Assert.AreEqual("plain", mediaType.Subtype);
         }
 
-
         //
         [Test]
         public void testApplicationXZipCompresssed()
@@ -50,6 +49,5 @@ namespace jsonbroker.library.common.http.headers
             Assert.AreEqual("application", mediaType.Type);
             Assert.AreEqual("x-zip-compressed", mediaType.Subtype);
         }
-
     }
 }
