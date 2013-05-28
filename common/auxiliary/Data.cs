@@ -38,7 +38,7 @@ namespace jsonbroker.library.common.auxiliary
         public Data(Stream content, int contentLength)
         {
             _buffer = new MemoryStream(contentLength);
-            StreamUtilities.write(contentLength,content, _buffer );
+            StreamHelper.write(contentLength,content, _buffer );
         }
 
         public Data(byte[] byteBuffer)
@@ -76,7 +76,7 @@ namespace jsonbroker.library.common.auxiliary
         public void CopyTo( Stream destination ) {
             seekToStart();
             //_buffer.CopyTo(destination); // .NET 4.0
-            StreamUtilities.write(_buffer, destination);            
+            StreamHelper.write(_buffer, destination);            
 
         }
 
@@ -129,7 +129,7 @@ namespace jsonbroker.library.common.auxiliary
         public void writeTo(Stream destination)
         {
             //_buffer.CopyTo(destination); // .NET 4.0
-            StreamUtilities.write(_buffer, destination);
+            StreamHelper.write(_buffer, destination);
             
         }
 

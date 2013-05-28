@@ -21,5 +21,12 @@ namespace jsonbroker.library.common.http
         // can return null. depends on the underlying object and how it was built
         String md5();
 
+
+        void TeardownForCaller(bool swallowErrors, Object caller);
+
+        void WriteTo(Stream destination, long offset, long length);
+
+
     }
+
 }

@@ -12,10 +12,10 @@ using jsonbroker.library.common.log;
 
 namespace jsonbroker.library.common.auxiliary
 {
-    public class StreamUtilities
+    public class StreamHelper
     {
 
-        private static readonly Log log = Log.getLog(typeof(StreamUtilities));
+        private static readonly Log log = Log.getLog(typeof(StreamHelper));
 
 
         private static readonly int BASE = ErrorCodeUtilities.getBaseErrorCode("jsonbroker.StreamUtilities");
@@ -132,7 +132,7 @@ namespace jsonbroker.library.common.auxiliary
                 int bytesRead = source.Read(buffer, 0, amountToRead);
                 if (0 == bytesRead)
                 {
-                    throw new BaseException(typeof(StreamUtilities), "0 == bytesRead");
+                    throw new BaseException(typeof(StreamHelper), "0 == bytesRead");
                 }
 
                 try
@@ -141,7 +141,7 @@ namespace jsonbroker.library.common.auxiliary
                 }
                 catch (IOException ioe)
                 {
-                    BaseException e = new BaseException(typeof(StreamUtilities), ioe);
+                    BaseException e = new BaseException(typeof(StreamHelper), ioe);
                     e.FaultCode = IOEXCEPTION_ON_STREAM_WRITE;
                     throw e;
                 }

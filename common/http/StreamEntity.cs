@@ -96,5 +96,18 @@ namespace jsonbroker.library.common.http
         {
             throw new BaseException(this, "unsupported");
         }
+
+        public void TeardownForCaller(bool swallowErrors, Object caller)
+        {
+            StreamHelper.close(_content, swallowErrors, this);
+        }
+
+
+        public void WriteTo(Stream destination, long offset, long length)
+        {
+            _content.Seek(offset, SeekOrigin.Current);
+            StreamHelper.write(length, _content, destination);
+        }
+
     }
 }

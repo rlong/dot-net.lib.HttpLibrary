@@ -82,7 +82,7 @@ namespace jsonbroker.library.client.http
             {
                 if (null != entityStream)
                 {
-                    StreamUtilities.close(entityStream, false, this);
+                    StreamHelper.close(entityStream, false, this);
                 }
             }
         }
@@ -233,7 +233,7 @@ namespace jsonbroker.library.client.http
                 answer.ServicePoint.Expect100Continue = false;
 
                 Entity entity = requestAdapter.RequestEntity;
-                StreamUtilities.write(entity.getContentLength(), entity.getContent(), answer.GetRequestStream());
+                StreamHelper.write(entity.getContentLength(), entity.getContent(), answer.GetRequestStream());
 
                 // ^^^ http://msdn.microsoft.com/en-us/library/system.net.webrequest.getrequeststream.aspx#Y600 
 
@@ -246,8 +246,8 @@ namespace jsonbroker.library.client.http
                     swallowExceptions = true;
                 }
 
-                StreamUtilities.close(requestEntity.getContent(), swallowExceptions, this);
-                StreamUtilities.close(destinationStream, swallowExceptions, this);
+                StreamHelper.close(requestEntity.getContent(), swallowExceptions, this);
+                StreamHelper.close(destinationStream, swallowExceptions, this);
             }
 
             return answer;

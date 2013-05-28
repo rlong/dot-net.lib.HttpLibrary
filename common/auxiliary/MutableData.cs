@@ -41,7 +41,7 @@ namespace jsonbroker.library.common.auxiliary
         {
             seekToEnd();
             //source.CopyTo(_buffer); // .NET 4.0
-            StreamUtilities.write(source, _buffer);
+            StreamHelper.write(source, _buffer);
         }
 
         //
@@ -49,7 +49,7 @@ namespace jsonbroker.library.common.auxiliary
         {
             seekToEnd();
             //source.CopyTo(_buffer, (int)length); // .NET 4.0
-            StreamUtilities.write(length,source, _buffer); 
+            StreamHelper.write(length,source, _buffer); 
                  
         }
 
@@ -85,7 +85,7 @@ namespace jsonbroker.library.common.auxiliary
 
         public void append(Stream source, uint length)
         {
-            StreamUtilities.write(length,source, _buffer);
+            StreamHelper.write(length,source, _buffer);
         }
 
         public virtual void clear()

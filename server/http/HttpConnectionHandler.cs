@@ -22,9 +22,9 @@ using jsonbroker.library.common.auxiliary;
 
 namespace jsonbroker.library.server.http
 {
-    public class ConnectionHandler
+    public class HttpConnectionHandler
     {
-        private static Log log = Log.getLog(typeof(ConnectionHandler));
+        private static Log log = Log.getLog(typeof(HttpConnectionHandler));
 
 
         ////////////////////////////////////////////////////////////////////////////
@@ -52,7 +52,7 @@ namespace jsonbroker.library.server.http
         // 
         RequestHandler _httpProcessor;
 
-        private ConnectionHandler(Socket socket, RequestHandler httpProcessor)
+        private HttpConnectionHandler(Socket socket, RequestHandler httpProcessor)
         {
             this._socket = socket;
             //
@@ -114,7 +114,7 @@ namespace jsonbroker.library.server.http
             }
             catch (BaseException e)
             {
-                if (e.FaultCode == StreamUtilities.IOEXCEPTION_ON_STREAM_WRITE)
+                if (e.FaultCode == StreamHelper.IOEXCEPTION_ON_STREAM_WRITE)
                 {
                     log.warn("IOException raised while writing response (socket closed ?)");
                     return false;
@@ -141,7 +141,7 @@ namespace jsonbroker.library.server.http
             Entity entity = response.Entity;
             if (null != entity)
             {
-                StreamUtilities.close(entity.getContent(), false, typeof(ConnectionHandler));
+                StreamHelper.close(entity.getContent(), false, typeof(HttpConnectionHandler));
             }
         }
 
@@ -270,7 +270,7 @@ namespace jsonbroker.library.server.http
             {
                 if (_socket.Connected)
                 {
-                    StreamUtilities.flush(_networkStream, true, this);
+                    StreamHelper.flush(_networkStream, true, this);
 
                     // For connection-oriented protocols, it is recommended that you call Shutdown before calling the Close method. 
                     // This ensures that all data is sent and received on the connected socket before it is closed. 
@@ -278,7 +278,7 @@ namespace jsonbroker.library.server.http
 
                     _socket.Close(60);
                     //_socket.Disconnect(true);
-                    StreamUtilities.close(_networkStream, true, this);
+                    StreamHelper.close(_networkStream, true, this);
                 }
                 else
                 {
@@ -313,7 +313,7 @@ namespace jsonbroker.library.server.http
 
             log.enteredMethod();
 
-            ConnectionHandler connectionHandler = new ConnectionHandler(socket, httpProcessor);
+            HttpConnectionHandler connectionHandler = new HttpConnectionHandler(socket, httpProcessor);
 
             Thread thread = new Thread(new ThreadStart(connectionHandler.run));
             thread.IsBackground = true; // daemon thread

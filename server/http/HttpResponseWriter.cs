@@ -21,7 +21,7 @@ namespace jsonbroker.library.server.http
         private static Log log = Log.getLog(typeof(HttpResponseWriter));
 
 
-        public static void writeResponse(HttpResponse response, Stream outputStream)
+        public static void tryWriteResponse(HttpResponse response, Stream outputStream)
         {
             log.enteredMethod();
 
@@ -112,16 +112,18 @@ namespace jsonbroker.library.server.http
             byte[] headersUtf8Bytes = StringHelper.ToUtfBytes(statusLineAndHeaders.ToString()); // C# compiler does not like reuse of the name 'utfBytes'
             outputStream.Write(headersUtf8Bytes, 0, headersUtf8Bytes.Length);
 
-
-
             //////////////////////////////////////////////////////////////////
             // write the entity
 
-            Stream entityStream = entity.getContent();
-            entityStream.Seek(seekPosition, SeekOrigin.Current);
-            StreamUtilities.write(amountToWrite, entityStream, outputStream);
-            StreamUtilities.flush(outputStream, false, typeof(HttpResponseWriter));
+            entity.WriteTo(outputStream, seekPosition, amountToWrite);
+            StreamHelper.flush(outputStream, false, typeof(HttpResponseWriter));
         }
+
+        public static void writeResponse(HttpResponse response, Stream outputStream)
+        {
+            tryWriteResponse(response, outputStream);
+        }
+
 
     }
 }

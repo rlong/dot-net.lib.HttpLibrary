@@ -65,7 +65,7 @@
     <Compile Include="common\auxiliary\OperatingSystemUtilities.cs" />
     <Compile Include="common\auxiliary\RandomUtilities.cs" />
     <Compile Include="common\auxiliary\SecurityUtilities.cs" />
-    <Compile Include="common\auxiliary\StreamUtilities.cs" />
+    <Compile Include="common\auxiliary\StreamHelper.cs" />
     <Compile Include="common\auxiliary\StringHelper.cs" />
     <Compile Include="common\broker\BrokerMessage.cs" />
     <Compile Include="common\broker\BrokerMessageType.cs" />
@@ -171,7 +171,7 @@
     <Compile Include="server\broker\ServiceDescription.cs" />
     <Compile Include="server\broker\ServiceHelper.cs" />
     <Compile Include="server\broker\ServicesRegistery.cs" />
-    <Compile Include="server\http\ConnectionHandler.cs" />
+    <Compile Include="server\http\HttpConnectionHandler.cs" />
     <Compile Include="server\http\HttpErrorHelper.cs" />
     <Compile Include="server\http\HttpMethod.cs" />
     <Compile Include="server\http\reqest_handler\CorsServicesRequestHandler.cs" />

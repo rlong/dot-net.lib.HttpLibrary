@@ -126,7 +126,7 @@ namespace jsonbroker.library.server.http
                         // Accept a new connection from the net, blocking till one comes in
                         Socket clientSocket = _serverSocket.Accept();
 
-                        ConnectionHandler.handleConnection(clientSocket, _httpProcessor);
+                        HttpConnectionHandler.handleConnection(clientSocket, _httpProcessor);
                     }
 
                 }
