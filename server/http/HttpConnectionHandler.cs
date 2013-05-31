@@ -134,16 +134,6 @@ namespace jsonbroker.library.server.http
             return true;
         }
 
-        private void cleanup(HttpResponse response)
-        {
-
-            // clean up 'entity' stream if it exists... 
-            Entity entity = response.Entity;
-            if (null != entity)
-            {
-                StreamHelper.close(entity.getContent(), false, typeof(HttpConnectionHandler));
-            }
-        }
 
         private void logRequestResponse(HttpRequest request, HttpResponse response, bool writeResponseSucceded)
         {
@@ -235,8 +225,7 @@ namespace jsonbroker.library.server.http
             // write the response ... 
             bool writeResponseSucceded = writeResponse(response);
 
-            cleanup(response);
-
+            // do some logging ...				
             logRequestResponse(request, response, writeResponseSucceded);
 
             if (!writeResponseSucceded)
@@ -278,12 +267,13 @@ namespace jsonbroker.library.server.http
 
                     _socket.Close(60);
                     //_socket.Disconnect(true);
-                    StreamHelper.close(_networkStream, true, this);
                 }
                 else
                 {
                     log.debug("!_socket.Connected");
                 }
+
+                StreamHelper.close(_networkStream, true, this);
 
             }
             catch (Exception e)

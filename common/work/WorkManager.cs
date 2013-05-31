@@ -53,6 +53,17 @@ namespace jsonbroker.library.common.work
             _workQueue.enqueue(job);
         }
 
+        public static void enqueue(Job job, JobListener jobListener)
+        {
+
+            if (null == _workers)
+            {
+                log.warn("null == _workers");
+            }
+
+            ListenedJob listenedJob = new ListenedJob(job, jobListener);
+            _workQueue.enqueue(listenedJob);
+        }
 
     }
 }
