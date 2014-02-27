@@ -113,6 +113,7 @@
     <Compile Include="common\json\handlers\JsonNumberHandler.cs" />
     <Compile Include="common\json\handlers\JsonObjectHandler.cs" />
     <Compile Include="common\json\handlers\JsonStringHandler.cs" />
+    <Compile Include="common\json\handlers\JsonStringHandlerUnitTest.cs" />
     <Compile Include="common\json\input\JsonDataInput.cs" />
     <Compile Include="common\json\input\JsonInput.cs" />
     <Compile Include="common\json\input\JsonInputHelper.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="common\security\Subject.cs" />
     <Compile Include="common\work\Job.cs" />
     <Compile Include="common\work\JobListener.cs" />
+    <Compile Include="common\work\ListenedJob.cs" />
     <Compile Include="common\work\Worker.cs" />
     <Compile Include="common\work\WorkManager.cs" />
     <Compile Include="common\work\WorkQueue.cs" />

@@ -30,16 +30,6 @@ namespace jsonbroker.library.server.http
         ////////////////////////////////////////////////////////////////////////////
         private static int _connectionId = 1;
 
-
-        ////////////////////////////////////////////////////////////////////////////
-        private static List<RequestHandler> _httpProcessors = new List<RequestHandler>();
-
-        public static void AddHttpProcessor(RequestHandler httpProcessor)
-        {
-            _httpProcessors.Add(httpProcessor);
-        }
-
-
         ////////////////////////////////////////////////////////////////////////////
         //
         private Socket _socket;

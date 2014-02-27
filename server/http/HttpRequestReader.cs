@@ -69,15 +69,15 @@ namespace jsonbroker.library.server.http
             */
             String method = tokens[0];
 
-            if (HttpMethod.GET.Name.Equals(method))
+            if (HttpMethod.GET.Matches(method))
             {
                 request.Method = HttpMethod.GET;
             }
-            else if (HttpMethod.POST.Name.Equals(method))
+            else if (HttpMethod.POST.Matches(method))
             {
                 request.Method = HttpMethod.POST;
             }
-            else if (HttpMethod.OPTIONS.Name.Equals(method))
+            else if (HttpMethod.OPTIONS.Matches(method))
             {
                 request.Method = HttpMethod.OPTIONS;
             }

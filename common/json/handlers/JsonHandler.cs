@@ -60,7 +60,7 @@ namespace jsonbroker.library.common.json.handlers
 
             if (value is String)
             {
-                return JsonStringHandler.getInstance();
+                return JsonStringHandler.INSTANCE;
             }
 
             Type type = value.GetType();
@@ -72,7 +72,7 @@ namespace jsonbroker.library.common.json.handlers
         {
             if ('"' == tokenBeginning)
             {
-                return JsonStringHandler.getInstance();
+                return JsonStringHandler.INSTANCE;
             }
 
             if ('0' <= tokenBeginning && tokenBeginning <= '9')

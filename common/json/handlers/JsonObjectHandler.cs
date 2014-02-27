@@ -89,7 +89,7 @@ namespace jsonbroker.library.common.json.handlers
 
                 KeyValuePair<String, Object> entry = i.Current;
 
-                JsonStringHandler.getInstance().WriteValue(entry.Key, writer);
+                JsonStringHandler.INSTANCE.WriteValue(entry.Key, writer);
 
                 writer.append(':');
 

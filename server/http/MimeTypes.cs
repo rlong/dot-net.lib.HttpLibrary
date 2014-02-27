@@ -30,11 +30,12 @@ namespace jsonbroker.library.server.http
             MIME_TYPES[".jpg"] = "image/jpeg";
             MIME_TYPES[".js"] = "application/javascript";
             MIME_TYPES[".json"] = APPLICATION_JSON;
+            MIME_TYPES[".map"] = APPLICATION_JSON; // http://stackoverflow.com/questions/19911929/what-mime-type-should-i-use-for-source-map-files
             MIME_TYPES[".png"] = "image/png";
             MIME_TYPES[".svg"] = "image/svg+xml"; // http://www.ietf.org/rfc/rfc3023.txt, section 8.19
+            MIME_TYPES[".ts"] = "text/x.typescript"; // http://stackoverflow.com/questions/13213787/whats-the-mime-type-of-typescript
             MIME_TYPES[".ttf"] = "application/x-font-ttf"; // http://symbolset.com/blog/properly-serve-webfonts/
             MIME_TYPES[".woff"] = "application/x-font-woff"; // http://symbolset.com/blog/properly-serve-webfonts/
-
         }
 
 

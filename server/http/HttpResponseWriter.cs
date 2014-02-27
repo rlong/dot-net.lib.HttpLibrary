@@ -124,6 +124,5 @@ namespace jsonbroker.library.server.http
             tryWriteResponse(response, outputStream);
         }
 
-
     }
 }

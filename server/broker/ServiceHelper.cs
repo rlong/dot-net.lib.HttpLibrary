@@ -23,6 +23,7 @@ namespace jsonbroker.library.server.broker
             String methodName = request.getMethodName();
 
             BaseException answer = new BaseException(originator, "Unknown methodName; methodName = '{0}'", methodName);
+            answer.ErrorDomain = "jsonbroker.ServiceHelper.METHOD_NOT_FOUND";
             answer.FaultCode = METHOD_NOT_FOUND;
 
             return answer;

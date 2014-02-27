@@ -144,12 +144,12 @@ namespace jsonbroker.library.common.exception
 
             if (0 != lineNumber)
             {
-                return String.Format("{0}:{1:x}", originatingClassName, lineNumber);
+                return String.Format("{0}:{1}", originatingClassName, lineNumber);
             }
 
             if (null != methodName)
             {
-                return String.Format("{0}:{1}", originatingClassName, methodName);
+                return String.Format("[{0} {1}]", originatingClassName, methodName);
             }
 
             return originatingClassName;

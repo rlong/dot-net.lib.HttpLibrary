@@ -15,12 +15,8 @@ namespace jsonbroker.library.common.json.handlers
     class JsonStringHandler : JsonHandler
     {
 
-        private static readonly JsonStringHandler _instance = new JsonStringHandler();
+        public static readonly JsonStringHandler INSTANCE = new JsonStringHandler();
 
-        public static JsonStringHandler getInstance()
-        {
-            return _instance;
-        }
 
 	    ////////////////////////////////////////////////////////////////////////////
 
@@ -57,7 +53,7 @@ namespace jsonbroker.library.common.json.handlers
 
                     b = input.nextByte();
 
-                    if ('"' == b || '\\' == b)
+                    if ('"' == b || '\\' == b || '/' == b )
                     {
                         data.Append(b);
                         continue;
@@ -115,6 +111,13 @@ namespace jsonbroker.library.common.json.handlers
                     writer.append("\\\\");
                     continue;
                 }
+
+                if ('/' == c)
+                {
+                    writer.append("\\/");
+                    continue;
+                }
+
 
                 if ('\n' == c)
                 {

@@ -97,17 +97,17 @@ namespace jsonbroker.library.common.http
             throw new BaseException(this, "unsupported");
         }
 
-        public void TeardownForCaller(bool swallowErrors, Object caller)
-        {
-            StreamHelper.close(_content, swallowErrors, this);
-        }
-
 
         public void WriteTo(Stream destination, long offset, long length)
         {
+
+            getContent(); // force the stream to be opened if it has not already been
+
+
             _content.Seek(offset, SeekOrigin.Current);
             StreamHelper.write(length, _content, destination);
+            StreamHelper.close(_content, false, this);
+            _content = null;
         }
-
     }
 }

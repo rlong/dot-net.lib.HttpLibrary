@@ -64,20 +64,14 @@ namespace jsonbroker.library.common.http
             return SecurityUtilities.md5HashOfData(_data);
         }
 
-        public void TeardownForCaller(bool swallowErrors, Object caller) 
-        {
-            if (null != _streamContent)
-            {
-                StreamHelper.close(_streamContent, swallowErrors, this);
-                _streamContent = null;
-            }
-        }
 
         public void WriteTo(Stream destination, long offset, long length)
         {
             Stream content = this.getContent();
             content.Seek(offset, SeekOrigin.Current);
             StreamHelper.write(length, content, destination);
+            StreamHelper.close(_streamContent, false, this);
+            _streamContent = null;
         }
 
     }

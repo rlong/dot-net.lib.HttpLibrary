@@ -27,7 +27,10 @@ namespace jsonbroker.library.server.http
 
         public static BaseException badRequest400FromOriginator(Object originatingObject)
         {
-            return buildException(originatingObject, HttpStatus.BAD_REQUEST_400);
+            BaseException answer = buildException(originatingObject, HttpStatus.BAD_REQUEST_400);
+            answer.ErrorDomain = HttpStatus.ErrorDomain.BAD_REQUEST_400;
+            return answer;
+
         }
 
         public static BaseException unauthorized401FromOriginator(Object originatingObject)

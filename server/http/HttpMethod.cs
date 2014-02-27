@@ -31,5 +31,15 @@ namespace jsonbroker.library.server.http
         {
             _name = name;
         }
+
+
+        public Boolean Matches(String method)
+        {
+            if( _name.Equals( method ) )
+            { 
+                return true;
+            }
+            return false;
+        }
     }
 }

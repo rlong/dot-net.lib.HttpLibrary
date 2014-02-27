@@ -22,8 +22,6 @@ namespace jsonbroker.library.common.http
         String md5();
 
 
-        void TeardownForCaller(bool swallowErrors, Object caller);
-
         void WriteTo(Stream destination, long offset, long length);
 
 

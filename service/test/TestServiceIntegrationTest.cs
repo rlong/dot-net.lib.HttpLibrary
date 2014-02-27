@@ -19,7 +19,6 @@ namespace jsonbroker.library.service.test
 
     [TestFixture]
     [Category("integration")]
-    [Category("current")]
     public class TestServiceIntegrationTest
     {
 
