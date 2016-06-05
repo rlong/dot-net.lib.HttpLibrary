@@ -110,8 +110,8 @@ namespace jsonbroker.library.common.broker
             _messageType = BrokerMessageType.lookup(messageTypeIdentifer);
             _metaData = values.GetJsonObject(1);
             _serviceName = values.GetString(2);
-            int majorVersion = values.GetInteger(3);
-            int minorVersion = values.GetInteger(4);
+            // int majorVersion = values.GetInteger(3);
+            // int minorVersion = values.GetInteger(4);
             _methodName = values.GetString(5);
             _associativeParamaters = values.GetJsonObject(6);
             if (7 < values.Count())

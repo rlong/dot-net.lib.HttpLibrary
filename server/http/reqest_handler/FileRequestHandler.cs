@@ -84,7 +84,9 @@ namespace jsonbroker.library.server.http.reqest_handler
         {
 
             // Replace the forward slashes with back-slashes to make a file name
-            string filename = relativePath.Replace('/', '\\');
+            // string filename = relativePath.Replace('/', '\\');
+			string filename = relativePath;
+			// log.debug (filename, "filename");
 
             FileInfo file = new FileInfo(_rootFolder + filename);
 

@@ -51,13 +51,13 @@ namespace jsonbroker.library.common.defaults
             // settings ... 
             {
 
-                String settingsValue = ConfigurationManager.AppSettings.Get(scope);
-                if (null != settingsValue)
-                {
-                    log.debug(settingsValue, "settingsValue");
-                    JsonObject environment = JsonObjectHelper.FromString(settingsValue);
-                    return new Defaults(environment);
-                }
+//                String settingsValue = ConfigurationManager.AppSettings.Get(scope);
+//                if (null != settingsValue)
+//                {
+//                    log.debug(settingsValue, "settingsValue");
+//                    JsonObject environment = JsonObjectHelper.FromString(settingsValue);
+//                    return new Defaults(environment);
+//                }
 
             }
 

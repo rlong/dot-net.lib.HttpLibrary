@@ -49,7 +49,7 @@ namespace jsonbroker.library.server.http
             {
                 LingerOption linger = new LingerOption(true, 60);
                 _socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger, linger);
-                Object langer = _socket.GetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger);
+                // Object langer = _socket.GetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger);
             }
             _httpProcessor = httpProcessor;
 
