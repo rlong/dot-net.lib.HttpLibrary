@@ -1,4 +1,4 @@
-jsonbroker.c_sharp
-==================
+dot-net.lib.HttpLibrary
+=======================
 
-JsonBroker library written in C#
+an implementation of a synchronous HTTP Server written in C#
