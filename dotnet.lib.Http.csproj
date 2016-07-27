@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEDAE473-56B2-4AF2-B3E1-F4AD8D38D394}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>dotnet.lib.HttpLibrary</RootNamespace>
+    <AssemblyName>dotnet.lib.HttpLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="headers\AuthenticationHeaderScanner.cs" />
+    <Compile Include="headers\HttpHeader.cs" />
+    <Compile Include="headers\MediaType.cs" />
+    <Compile Include="headers\MediaTypeUnitTest.cs" />
+    <Compile Include="headers\ParametersScanner.cs" />
+    <Compile Include="client\Authenticator.cs" />
+    <Compile Include="client\HttpDispatcher.cs" />
+    <Compile Include="client\HttpRequestAdapter.cs" />
+    <Compile Include="client\HttpResponseHandler.cs" />
+    <Compile Include="DataEntity.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="HttpStatus.cs" />
+    <Compile Include="Part.cs" />
+    <Compile Include="StreamEntity.cs" />
+    <Compile Include="multi_part\ContentDisposition.cs" />
+    <Compile Include="multi_part\ContentDispositionUnitTest.cs" />
+    <Compile Include="multi_part\DelimiterDetector.cs" />
+    <Compile Include="multi_part\DelimiterFound.cs" />
+    <Compile Include="multi_part\DelimiterIndicator.cs" />
+    <Compile Include="multi_part\MultiPartHandler.cs" />
+    <Compile Include="multi_part\MultiPartReader.cs" />
+    <Compile Include="multi_part\MultiPartReaderUnitTest.cs" />
+    <Compile Include="multi_part\PartHandler.cs" />
+    <Compile Include="multi_part\PartHandlerHelper.cs" />
+    <Compile Include="multi_part\PartialDelimiterMatch.cs" />
+    <Compile Include="server\HttpConnectionHandler.cs" />
+    <Compile Include="server\HttpErrorHelper.cs" />
+    <Compile Include="server\HttpMethod.cs" />
+    <Compile Include="server\HttpRequest.cs" />
+    <Compile Include="server\HttpRequestReader.cs" />
+    <Compile Include="server\HttpResponse.cs" />
+    <Compile Include="server\HttpResponseWriter.cs" />
+    <Compile Include="server\MimeTypes.cs" />
+    <Compile Include="server\RequestHandler.cs" />
+    <Compile Include="server\WebServer.cs" />
+    <Compile Include="authentication\ClientSecurityConfiguration.cs" />
+    <Compile Include="authentication\SecurityAdapter.cs" />
+    <Compile Include="authentication\SecurityConfiguration.cs" />
+    <Compile Include="authentication\SecurityConfiguration_Generated.cs" />
+    <Compile Include="authentication\ServerSecurityConfiguration.cs" />
+    <Compile Include="authentication\SimpleSecurityAdapter.cs" />
+    <Compile Include="authentication\Subject.cs" />
+    <Compile Include="json_broker\BrokerMessage.cs" />
+    <Compile Include="json_broker\BrokerMessageType.cs" />
+    <Compile Include="json_broker\FaultSerializer.cs" />
+    <Compile Include="json_broker\Serializer.cs" />
+    <Compile Include="authentication.server\AuthIntRequestHandler.cs" />
+    <Compile Include="authentication.server\AuthRequestHandler.cs" />
+    <Compile Include="authentication.server\HttpSecurityJanitor.cs" />
+    <Compile Include="authentication.server\HttpSecurityManager.cs" />
+    <Compile Include="authentication.server\HttpSecuritySession.cs" />
+    <Compile Include="authentication.server\SubjectGroup.cs" />
+    <Compile Include="file.server\FileGetRequestHandler.cs" />
+    <Compile Include="file.server\FileSaveMultiPartHandler.cs" />
+    <Compile Include="file.server\FileSavePartHandler.cs" />
+    <Compile Include="headers.request\Authorization.cs" />
+    <Compile Include="headers.request\BytePosition.cs" />
+    <Compile Include="headers.request\Range.cs" />
+    <Compile Include="headers.request\RangeUnitTest.cs" />
+    <Compile Include="headers.response\AuthenticationInfo.cs" />
+    <Compile Include="headers.response\WwwAuthenticate.cs" />
+    <Compile Include="json_broker.test\IntegrationTestServer.cs" />
+    <Compile Include="json_broker.test\IntegrationTestUtilities.cs" />
+    <Compile Include="json_broker.service\NullService.cs" />
+    <Compile Include="json_broker.service.test\TestProxy.cs" />
+    <Compile Include="json_broker.service.test\TestService.cs" />
+    <Compile Include="json_broker.service.test\TestServiceIntegrationTest.cs" />
+    <Compile Include="json_broker.service.configuration\ConfigurationService.cs" />
+    <Compile Include="json_broker.server\BrokerJob.cs" />
+    <Compile Include="json_broker.server\CorsServicesRequestHandler.cs" />
+    <Compile Include="json_broker.server\DescribedService.cs" />
+    <Compile Include="json_broker.server\JavascriptCallbackAdapter.cs" />
+    <Compile Include="json_broker.server\JavascriptCallbackAdapterHelper.cs" />
+    <Compile Include="json_broker.server\Service.cs" />
+    <Compile Include="json_broker.server\ServiceDescription.cs" />
+    <Compile Include="json_broker.server\ServiceHelper.cs" />
+    <Compile Include="json_broker.server\ServicesRegistery.cs" />
+    <Compile Include="json_broker.server\ServicesRequestHandler.cs" />
+    <Compile Include="json_broker.client\BrokerMessageResponseHandler.cs" />
+    <Compile Include="json_broker.client\ProxyHelper.cs" />
+    <Compile Include="json_broker.client\ServiceHttpProxy.cs" />
+    <Compile Include="json_broker.channel\Channel.cs" />
+    <Compile Include="json_broker.channel\ServiceChannelProxy.cs" />
+    <Compile Include="json_broker.channel\SocketChannel.cs" />
+    <Compile Include="json_broker.channel\SocketServerChannel.cs" />
+    <Compile Include="server.reqest_handler\OpenRequestHandler.cs" />
+    <Compile Include="server.reqest_handler\RootRequestHandler.cs" />
+    <Compile Include="headers.response\CacheControlFactory.cs" />
+    <Compile Include="headers.response\LastModified.cs" />
+    <Compile Include="headers\CacheControl.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\dotnet.lib.CoreAnnex\dotnet.lib.CoreAnnex.csproj">
+      <Project>{0BC206B4-6F76-45B2-B181-FCFABEDF65AA}</Project>
+      <Name>dotnet.lib.CoreAnnex</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="headers\" />
+    <Folder Include="client\" />
+    <Folder Include="multi_part\" />
+    <Folder Include="server\" />
+    <Folder Include="authentication\" />
+    <Folder Include="json_broker\" />
+    <Folder Include="authentication.server\" />
+    <Folder Include="file.server\" />
+    <Folder Include="headers.request\" />
+    <Folder Include="headers.response\" />
+    <Folder Include="json_broker.channel\" />
+    <Folder Include="json_broker.client\" />
+    <Folder Include="json_broker.server\" />
+    <Folder Include="json_broker.service.configuration\" />
+    <Folder Include="json_broker.service\" />
+    <Folder Include="json_broker.service.test\" />
+    <Folder Include="json_broker.test\" />
+    <Folder Include="server.reqest_handler\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
