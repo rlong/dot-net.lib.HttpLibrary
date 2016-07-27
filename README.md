@@ -1,4 +1,4 @@
-dot-net.lib.HttpLibrary
+dotnet.lib.HttpLibrary
 =======================
 
 an implementation of a synchronous HTTP Server written in C#
