@@ -126,13 +126,8 @@
     <Compile Include="headers.response\LastModified.cs" />
     <Compile Include="headers\CacheControl.cs" />
   </ItemGroup>
+  <Import Project="..\dotnet.lib.CoreAnnex\dotnet.lib.CoreAnnex.projitems" Label="Shared" Condition="Exists('..\dotnet.lib.CoreAnnex\dotnet.lib.CoreAnnex.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\dotnet.lib.CoreAnnex\dotnet.lib.CoreAnnex.csproj">
-      <Project>{0BC206B4-6F76-45B2-B181-FCFABEDF65AA}</Project>
-      <Name>dotnet.lib.CoreAnnex</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="headers\" />
     <Folder Include="client\" />

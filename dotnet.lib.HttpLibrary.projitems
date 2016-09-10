@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{7D473735-229F-4E5C-A3C0-DA5BB86443D3}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>dotnet.lib.HttpLibrary</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\ClientSecurityConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\SecurityAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\SecurityConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\SecurityConfiguration_Generated.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\ServerSecurityConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\SimpleSecurityAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication\Subject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication.server\AuthIntRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication.server\AuthRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication.server\HttpSecurityJanitor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication.server\HttpSecurityManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication.server\HttpSecuritySession.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)authentication.server\SubjectGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HttpStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Part.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StreamEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)client\Authenticator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)client\HttpDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)client\HttpRequestAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)client\HttpResponseHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)file.server\FileGetRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)file.server\FileSaveMultiPartHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)file.server\FileSavePartHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers\AuthenticationHeaderScanner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers\CacheControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers\HttpHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers\MediaType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers\MediaTypeUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers\ParametersScanner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.request\Authorization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.request\BytePosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.request\Range.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.request\RangeUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.response\AuthenticationInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.response\CacheControlFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.response\LastModified.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)headers.response\WwwAuthenticate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker\BrokerMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker\BrokerMessageType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker\FaultSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker\Serializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.channel\Channel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.channel\ServiceChannelProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.channel\SocketChannel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.channel\SocketServerChannel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.client\BrokerMessageResponseHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.client\ProxyHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.client\ServiceHttpProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\BrokerJob.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\CorsServicesRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\DescribedService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\JavascriptCallbackAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\JavascriptCallbackAdapterHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\Service.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\ServiceDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\ServiceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\ServicesRegistery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.server\ServicesRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.service.configuration\ConfigurationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.service.test\TestProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.service.test\TestService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.service.test\TestServiceIntegrationTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\ContentDisposition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\ContentDispositionUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\DelimiterDetector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\DelimiterFound.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\DelimiterIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\MultiPartHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\MultiPartReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\MultiPartReaderUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\PartHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\PartHandlerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)multi_part\PartialDelimiterMatch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpConnectionHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpErrorHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpMethod.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpRequestReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\HttpResponseWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\MimeTypes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\RequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server\WebServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server.reqest_handler\OpenRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)server.reqest_handler\RootRequestHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.test\IntegrationTestServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)json_broker.test\IntegrationTestUtilities.cs" />
+  </ItemGroup>
+</Project>
